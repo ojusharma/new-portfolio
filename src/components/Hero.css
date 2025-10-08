@@ -1,0 +1,182 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 6rem 2rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 4rem;
+}
+
+.hero-text {
+  flex: 1;
+  max-width: 600px;
+}
+
+.hero-name {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #fff;
+  letter-spacing: 0.05em;
+  position: relative;
+  display: inline-block;
+}
+
+.typewriter-cursor {
+  color: #00d9ff;
+  animation: blink 1s infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.hero-details {
+  margin-bottom: 2.5rem;
+  color: #a0a0a0;
+  font-family: 'Courier New', monospace;
+  line-height: 1.8;
+}
+
+.hero-title {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.hero-university {
+  font-size: 1.1rem;
+  margin: 0.25rem 0;
+}
+
+.hero-graduation {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.hero-tagline {
+  font-size: 1.2rem;
+  margin: 2.5rem 0;
+  color: #fff;
+  font-family: 'Courier New', monospace;
+}
+
+.hero-location {
+  font-size: 1rem;
+  color: #a0a0a0;
+  font-family: 'Courier New', monospace;
+}
+
+.hero-image {
+  flex-shrink: 0;
+}
+
+.hero-image img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 3px solid #FFA500;
+  box-shadow: 0 0 30px rgba(255, 165, 0, 0.3);
+}
+
+@media (max-width: 968px) {
+  .hero {
+    padding: 4rem 1.5rem 1rem;
+  }
+
+  .hero-content {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 2.5rem;
+  }
+
+  .hero-text {
+    max-width: 100%;
+  }
+
+  .hero-name {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-details {
+    margin-bottom: 2rem;
+  }
+
+  .hero-tagline {
+    margin: 2rem 0;
+  }
+
+  .hero-image img {
+    width: 220px;
+    height: 220px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 4rem 1rem 1rem;
+  }
+
+  .hero-name {
+    font-size: 1.75rem;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-details {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .hero-title,
+  .hero-university,
+  .hero-graduation {
+    font-size: 0.9rem;
+  }
+
+  .hero-tagline {
+    font-size: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .hero-location {
+    font-size: 0.85rem;
+  }
+
+  .hero-image img {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero {
+    padding: 4rem 0.75rem 0.75rem;
+  }
+
+  .hero-name {
+    font-size: 1.5rem;
+  }
+
+  .hero-details,
+  .hero-tagline,
+  .hero-location {
+    font-size: 0.85rem;
+  }
+
+  .hero-image img {
+    width: 160px;
+    height: 160px;
+  }
+}
