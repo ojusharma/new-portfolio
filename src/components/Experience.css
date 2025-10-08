@@ -1,0 +1,500 @@
+.experience-section {
+  min-height: 100vh;
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  color: #fff;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+}
+
+.section-symbol {
+  color: #FFA500;
+}
+
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.experience-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed #333;
+  border-radius: 8px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.experience-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #444;
+  transform: translateY(-2px);
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  width: 100%;
+}
+
+.experience-info {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+}
+
+.experience-role {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.experience-company {
+  font-weight: 400;
+  color: #a0a0a0;
+}
+
+.experience-description {
+  color: #c0c0c0;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  font-size: 1.05rem;
+}
+
+.experience-period {
+  color: #a0a0a0;
+  font-size: 1.1rem;
+  white-space: nowrap;
+  font-family: 'Courier New', monospace;
+}
+
+.details-toggle {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid #FFD700;
+  color: #FFD700;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.details-toggle:hover {
+  background: rgba(255, 215, 0, 0.1);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+}
+
+.details-toggle.active {
+  background: rgba(0, 217, 255, 0.15);
+  border-color: #00d9ff;
+  color: #00d9ff;
+}
+
+/* Button Group */
+.button-group {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+/* Tech Stack Tags */
+.tech-stack-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.tech-tag {
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid #FFD700;
+  color: #FFD700;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  opacity: 0;
+  transform: scale(0.8);
+  animation: tagAppear 0.3s ease forwards;
+}
+
+@keyframes tagAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Terminal Container */
+.terminal-container {
+  margin-top: 1.5rem;
+  background: #0a0a0a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  animation: terminalSlideDown 0.4s ease;
+  max-height: 500px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+@keyframes terminalSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Terminal Header (macOS style) */
+.terminal-header {
+  background: #1a1a1a;
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-bottom: 1px solid #333;
+}
+
+.terminal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.terminal-dot.red {
+  background: #ff5f56;
+}
+
+.terminal-dot.yellow {
+  background: #ffbd2e;
+}
+
+.terminal-dot.green {
+  background: #27c93f;
+}
+
+.terminal-title {
+  margin-left: auto;
+  color: #666;
+  font-size: 0.75rem;
+  font-family: 'Courier New', monospace;
+}
+
+/* Terminal Content */
+.terminal-content {
+  padding: 1rem;
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  line-height: 2;
+  color: #e0e0e0;
+}
+
+/* Terminal Prompt */
+.terminal-prompt {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.prompt-user {
+  color: #27c93f;
+  font-weight: 600;
+}
+
+.prompt-separator {
+  color: #fff;
+  margin: 0 0.2rem;
+}
+
+.prompt-path {
+  color: #5C9CCC;
+}
+
+.prompt-symbol {
+  color: #fff;
+  margin: 0 0.5rem;
+  font-weight: bold;
+}
+
+.prompt-command {
+  color: #e0e0e0;
+}
+
+/* Terminal Output */
+.terminal-output {
+  color: #c0c0c0;
+  font-size: 1rem;
+}
+
+.terminal-line {
+  margin-bottom: 0.75rem;
+  opacity: 0;
+  transform: translateX(-10px);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.terminal-line.visible {
+  opacity: 1;
+  transform: translateX(0);
+  animation: lineAppear 0.3s ease forwards;
+}
+
+.terminal-line.typing {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.terminal-line.hidden {
+  opacity: 0;
+}
+
+@keyframes lineAppear {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.line-prefix {
+  color: #00d9ff;
+  margin-right: 0.75rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* End Prompt */
+.terminal-prompt-end {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  animation: promptAppear 0.3s ease;
+}
+
+@keyframes promptAppear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.cursor-blink {
+  color: #00d9ff;
+  animation: blink 1s infinite;
+  margin-left: 0.25rem;
+}
+
+/* Custom scrollbar for terminal */
+.terminal-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.terminal-container::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+.terminal-container::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+.terminal-container::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+@media (max-width: 968px) {
+  .experience-section {
+    padding: 3rem 1.5rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .experience-item {
+    padding: 1.5rem;
+  }
+
+  .experience-role {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .experience-section {
+    padding: 2.5rem 1rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .experience-item {
+    padding: 1.25rem;
+  }
+
+  .experience-header {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .experience-period {
+    align-self: flex-start;
+    font-size: 1rem;
+  }
+
+  .experience-role {
+    font-size: 1.15rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .experience-description {
+    font-size: 0.95rem;
+  }
+
+  .details-toggle {
+    padding: 0.45rem 1.25rem;
+    font-size: 0.85rem;
+  }
+
+  .button-group {
+    gap: 0.5rem;
+  }
+
+  .tech-tag {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .experience-details {
+    padding-left: 1rem;
+  }
+
+  .experience-details li {
+    font-size: 0.9rem;
+    padding-left: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .experience-section {
+    padding: 2rem 0.75rem;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+  }
+
+  .experience-item {
+    padding: 1rem;
+    border-radius: 6px;
+  }
+
+  .experience-role {
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .experience-company {
+    display: block;
+    margin-top: 0.25rem;
+  }
+
+  .experience-description {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .details-toggle {
+    padding: 0.4rem 0.875rem;
+    font-size: 0.75rem;
+  }
+
+  .button-group {
+    gap: 0.4rem;
+  }
+
+  .tech-tag {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.7rem;
+  }
+
+  /* Terminal mobile styles */
+  .terminal-container {
+    max-height: 400px;
+  }
+
+  .terminal-content {
+    padding: 0.75rem;
+    font-size: 0.85rem;
+    line-height: 1.7;
+  }
+
+  .terminal-header {
+    padding: 0.4rem 0.6rem;
+  }
+
+  .terminal-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .terminal-title {
+    font-size: 0.65rem;
+  }
+
+  .terminal-prompt,
+  .terminal-prompt-end {
+    font-size: 0.85rem;
+  }
+
+  .prompt-symbol {
+    margin: 0 0.3rem;
+  }
+
+  .terminal-line {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+
+  .line-prefix {
+    font-size: 1rem;
+  }
+}
