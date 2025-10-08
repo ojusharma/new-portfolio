@@ -5,7 +5,7 @@ import './Projects.css';
 const ProjectCard = ({ project }) => {
   return (
     <div className="project-card">
-      <div className="project-image">
+      {/* <div className="project-image">
         <img 
           src={project.coverImage} 
           alt={project.title}
@@ -13,7 +13,7 @@ const ProjectCard = ({ project }) => {
             e.target.src = 'https://via.placeholder.com/400x250/1a1a1a/FFA500?text=Project+Image';
           }}
         />
-      </div>
+      </div> */}
       
       <div className="project-content">
         <h3 className="project-title">{project.title}</h3>
