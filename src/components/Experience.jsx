@@ -28,12 +28,10 @@ const ExperienceItem = ({ experience }) => {
 
   const handleToggle = (view) => {
     if (activeView === view) {
-      // Close if clicking the same button
       setActiveView(null);
       setDisplayedLines([]);
       setCurrentLine(0);
     } else {
-      // Switch to new view
       setActiveView(view);
       setDisplayedLines([]);
       setCurrentLine(0);
@@ -87,7 +85,6 @@ const ExperienceItem = ({ experience }) => {
                 </div>
                 <div className="terminal-output">
                   {activeView === 'techstack' ? (
-                    // Tech stack display with tags
                     <div className="tech-stack-tags">
                       {displayedLines.map((tech, index) => (
                         <span key={index} className="tech-tag">
@@ -96,7 +93,6 @@ const ExperienceItem = ({ experience }) => {
                       ))}
                     </div>
                   ) : (
-                    // Details display with bullets
                     displayedLines.map((detail, index) => (
                       <div 
                         key={index} 
@@ -132,7 +128,7 @@ const Experience = () => {
   return (
     <section id="experience" className="experience-section">
       <h2 className="section-title">
-        <span className="section-symbol">$</span> experience
+        <span className="section-symbol">/</span>experience
       </h2>
 
       <div className="experience-list">

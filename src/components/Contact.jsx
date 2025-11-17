@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { contactInfo } from '../data/contact';
 import './Contact.css';
 
 const Contact = () => {
+  const [isHoveringEmail, setIsHoveringEmail] = useState(false);
+  const [isHoveringGithub, setIsHoveringGithub] = useState(false);
+  const [isHoveringLinkedin, setIsHoveringLinkedin] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const handleEmailClick = (e) => {
+    e.preventDefault();
+    navigator.clipboard.writeText(contactInfo.email);
+    setCopied(true);
+    setTimeout(() => {
+      setCopied(false);
+    }, 2000);
+  };
+
   return (
     <section id="contact" className="contact-section">
       <h2 className="section-title">
@@ -11,9 +25,9 @@ const Contact = () => {
 
       <div className="contact-content">
         <div className="contact-text">
-          <h3 className="contact-heading">Let's Connect</h3>
           <p className="contact-description">
-            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+            I'm always open to discussing new projects, creative ideas, or opportunities.
+            If you want to geek out about Formula 1, Liverpool FC or History, I'm more than happy to chat! 
           </p>
         </div>
 
@@ -22,11 +36,14 @@ const Contact = () => {
             <a 
               href={`mailto:${contactInfo.email}`}
               className="contact-link"
-              target="_blank"
-              rel="noopener noreferrer"
+              onClick={handleEmailClick}
+              onMouseEnter={() => setIsHoveringEmail(true)}
+              onMouseLeave={() => setIsHoveringEmail(false)}
             >
               <span className="link-icon">📧</span>
-              <span className="link-text">Email</span>
+              <span className="link-text">
+                {copied ? 'Copied to clipboard!' : (isHoveringEmail ? contactInfo.email : 'Email')}
+              </span>
             </a>
           )}
 
@@ -36,9 +53,13 @@ const Contact = () => {
               className="contact-link"
               target="_blank"
               rel="noopener noreferrer"
+              onMouseEnter={() => setIsHoveringGithub(true)}
+              onMouseLeave={() => setIsHoveringGithub(false)}
             >
               <span className="link-icon">🐙</span>
-              <span className="link-text">GitHub</span>
+              <span className="link-text">
+                {isHoveringGithub ? '@ojusharma' : 'GitHub'}
+              </span>
             </a>
           )}
 
@@ -48,9 +69,13 @@ const Contact = () => {
               className="contact-link"
               target="_blank"
               rel="noopener noreferrer"
+              onMouseEnter={() => setIsHoveringLinkedin(true)}
+              onMouseLeave={() => setIsHoveringLinkedin(false)}
             >
               <span className="link-icon">💼</span>
-              <span className="link-text">LinkedIn</span>
+              <span className="link-text">
+                {isHoveringLinkedin ? '/ojus-sharma' : 'LinkedIn'}
+              </span>
             </a>
           )}
 
@@ -69,7 +94,7 @@ const Contact = () => {
       </div>
 
       <footer className="footer">
-        <p>© 2025 • Built with React & ❤️</p>
+        <p>© 2025 • Built with Redbulls & Passion</p>
       </footer>
     </section>
   );

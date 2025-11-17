@@ -30,16 +30,6 @@ const ProjectCard = ({ project }) => {
         <div className="project-footer">
           <span className="project-tech">{project.techStack}</span>
           <div className="project-links">
-            {project.liveUrl && (
-              <a 
-                href={project.liveUrl} 
-                className="project-link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Live
-              </a>
-            )}
             <a 
               href={project.detailsUrl} 
               className="project-link details-link"
@@ -59,7 +49,7 @@ const Projects = () => {
   return (
     <section id="projects" className="projects-section">
       <h2 className="section-title">
-        <span className="section-symbol">/</span> Projects
+        <span className="section-symbol">/</span>projects
       </h2>
 
       <div className="projects-grid">

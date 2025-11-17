@@ -21,7 +21,7 @@ const Skills = () => {
   return (
     <section id="skills" className="skills-section">
       <h2 className="section-title">
-        <span className="section-symbol">$</span> skills<span className="cursor">_</span>
+        <span className="section-symbol">/</span>skills
       </h2>
 
       <div className="skills-grid">

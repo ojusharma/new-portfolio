@@ -1,36 +1,37 @@
-// Edit this file to update your experience
 export const experiences = [
   {
     id: 1,
     company: "Boeing - Vancouver",
-    role: "Software Development Intern",
+    role: "Software Development Co-op Intern",
     period: "Sep 2024 - Present",
-    description: "Worked on developer tools and platform reliability — modernized CI/CD, observability, and deployment tooling across microservices.",
+    description: "Currently working Part-Time, after a 12 month Co-op. \nEnhanced backend systems and platform reliability through strategic refactoring, CI/CD modernization, and security hardening across microservices.",
     details: [
-      "Revamped 20+ CI/CD pipelines across 11 microservices using reusable templates, dynamic value injection, and automated versioning (Docker, Kubernetes, Bash).",
-      "Built a Bash script to display critical Helm/Kubernetes metrics for 22 microservices and created an Azure Monitor dashboard to speed deployment verification (saved 40+ hours/year).",
-      "Designed and implemented an end-to-end deployment pipeline (Python & Bash) integrating Cosmos DB and Azure Service Bus to enable production launches.",
-      "Automated vulnerability scanning with Twistlock across 11 CI pipelines, remediating 30+ critical/high CVEs and reducing MTTR.",
-      "Architected a version-controlled Artifactory repository strategy for Helm charts, eliminating deployment failures caused by chart overrides.",
-      "Automated alert-tagging in Azure alert management scripts to reduce alert noise during deployment windows.",
-      "Hardened service principal rotation with Python-based error handling and notifications to ensure credential availability.",
-       "Implemented custom runtime metrics with Azure Application Insights, reducing false-positive on-call emergencies by 30%.",
-      "Refactored deployment scripts out of a monolithic repo to improve maintainability for a team of 14 developers and reduce pipeline risk."
+      "Enhanced Java Spring Boot microservice  that scans the database for expiring user-issued OAuth clients, preventing automated revocation of a newly onboarded Azure Service Principal and preserving API availability.",
+      "Revamped 20+ CI/CD pipelines across 11 microservices by implementing dynamic value injection, reusable templates & automated versioning (Docker, Kubernetes, Bash, Linux), reducing deployment times & saving 100+ hours annually.",
+      "Improved Java Spring Boot backend reliability by implementing custom runtime metrics with Microsoft Azure Application Insights; eliminated redundant runtime errors, and reduced false-positive on-call emergencies by 30%.",
+      "Optimized deployment verification by developing a Bash script that displays critical Helm and Kubernetes metrics for 22 microservices (saved 40+ hours/year) and built a complementary Azure Monitor dashboard.",
+      "Designed and built an end-to-end deployment pipeline from scratch in Python and Bash, enabling the first production launch of a new feature, with Cosmos DB and Microsoft Azure Service Bus integration.",
+      "Bolstered platform security by automating vulnerability scanning with Twistlock in 11 CI pipelines, remediating critical CVEs and reducing the mean time to remediation (MTTR) by an estimated 30%.",
+      "Architected and deployed a version-controlled JFrog Artifactory repository strategy for Helm charts, eliminating 100% of deployment failures caused by chart overrides and improving deployment reliability for 9 microservices.",
+      "Engineered a dynamic tagging system in an Azure alert management script using Bash and Python, reducing alert noise by cutting false positives during deployment windows by 100%.",
+      "Fortified a critical service principal rotation pipeline with a Python-based error handling and notification system, guaranteeing 100% credential availability and preventing potential service outages across the platform.",
+      "Refactored a monolithic repository by decoupling deployment scripts, reducing the risk of deployment pipeline failures and improving codebase maintainability for a team of 14 developers.",
+      "Led a security initiative to upgrade base Docker images for 10 microservices, patching 30+ critical and high-severity CVEs to reduce the platform's attack surface significantly."
     ],
-    techStack: ["Python", "Bash", "Docker", "Kubernetes", "Azure DevOps", "Helm", "Twistlock", "Azure Monitor", "Cosmos DB", "Azure Service Bus"]
+    techStack: ["Java", "Spring Boot", "Python", "Bash", "Docker", "Kubernetes", "Azure DevOps", "Helm", "Twistlock", "Azure Monitor", "Cosmos DB", "Azure Service Bus", "JFrog Artifactory", "SendGrid"]
   },
   {
     id: 2,
     company: "University of British Columbia - Directed Studies",
-    role: "Software Developer & Research Student",
+    role: "Software Developer",
     period: "Sep 2025 - Present",
-    description: "Designing and building an LLM-powered, RAG-based system to generate personalized computer science practice problems and evaluate learning outcomes.",
+    description: "Designing an AI system that leverages Large Language Models (LLMs) to personalize computer science practice problems based on individual student profiles and preferences.",
     details: [
-      "Designing an AI system using Retrieval-Augmented Generation (RAG) to personalize CS practice problems based on student profiles and preferences.",
-      "Building a full-stack application with React Router v7 and TypeScript; integrating LLM pipelines and adaptive content retrieval.",
-      "Planning and conducting an evaluation study targeting 2,000+ CS undergraduates to measure impacts on learning and engagement (supervised by Prof. Abdallah Mohamed)."
+      "Designing an AI system that leverages Large Language Models (LLMs) to personalize computer science practice problems based on individual student profiles and preferences.",
+      "Building a full-stack software with React Router and TypeScript; integrating LLM pipelines for adaptive content retrieval.",
+      "Conducting an evaluation study with a target population of 2,000+ CS undergraduates to assess impacts on learning outcomes and engagement, under the supervision of Prof. Abdallah Mohamed."
     ],
-    techStack: ["React", "TypeScript", "React Router v7", "LLM", "RAG", "Python", "Node.js"]
+    techStack: ["React", "TypeScript", "React Router", "LLM", "RAG", "Python", "Node.js"]
   },
   {
     id: 3,
@@ -63,10 +64,10 @@ export const experiences = [
     company: "University of British Columbia",
     role: "Software Development Intern",
     period: "May 2023 - Jun 2023",
-    description: "Built interactive transcript visualizations and resilient data ingestion pipelines for the Student University Course Planner.",
+    description: "Developed interactive academic transcript visualizations and resilient data ingestion pipelines for the Student University Course Planner.",
     details: [
-      "Developed interactive academic transcript visualizations using Java Swing and Apache Commons for a tool used by 10,000+ students.",
-      "Built a resilient data-ingestion pipeline to parse CSV/XML transcript exports with validation, error handling, caching, and fast load times."
+      "Developed interactive academic transcript visualizations (Java Swing, Apache Commons) for the Student University Course Planner, to be used by 10,000+ students, improving course selection workflows and usability.",
+      "Built a resilient data-ingestion pipeline to parse multiple transcript export formats (CSV/XML), added validation, error handling and caching to ensure accuracy and fast load times for complex records."
     ],
     techStack: ["Java", "Java Swing", "Apache Commons", "CSV", "XML"]
   }

@@ -1,4 +1,3 @@
-// Edit this file to update your skills
 export const skills = {
   languages: [
     "JavaScript",

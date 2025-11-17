@@ -9,7 +9,6 @@ const Navbar = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      // Determine active section based on scroll position
       const sections = ['home', 'experience', 'skills', 'projects', 'contact'];
       const currentSection = sections.find(section => {
         const element = document.getElementById(section);
@@ -43,18 +42,17 @@ const Navbar = () => {
     { id: 'contact', label: '/contact' },
   ];
 
-  // Special section for love/hobbies
   const loveSection = { id: 'love', label: '/love' };
 
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="navbar-content">
         <button 
-          className="nav-logo"
+          className="nav-logo"Frevamped
           onClick={() => scrollToSection('home')}
         >
-          <span className="logo-ls">ls</span>
-          <span className="logo-portfolio">portfolio</span>
+          <span className="logo-ls">$</span>
+          <span className="logo-portfolio">ls portfolio</span>
         </button>
 
         <div className="nav-links">
