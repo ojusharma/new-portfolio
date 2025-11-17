@@ -11,7 +11,7 @@ export const projects = [
     id: 3,
     title: "F1 Trigger Chrome Extension",
     description: "A Chrome extension that brings Formula 1 racing to your browser.",
-    tags: ["JavaScript", "Chrome Extension", "F1"],
+    tags: ["JavaScript", "Chrome Extension"],
     liveUrl: "https://github.com/ojusharma/f1-trigger-chrome-extension",
     detailsUrl: "https://github.com/ojusharma/f1-trigger-chrome-extension"
   },
@@ -36,7 +36,7 @@ export const projects = [
     id: 4,
     title: "Safe Route App",
     description: "Android App for Route-Sharing and Real-Time Navigation with safety-optimized routing",
-    tags: ["Java", "Android", "Google Maps API", "Firebase"],
+    tags: ["Java", "Android", "Google Maps API", "Firebase", "Real-Time Tracking"],
     liveUrl: "https://github.com/ojusharma/Safe-Route-App",
     detailsUrl: "https://github.com/ojusharma/Safe-Route-App"
   },
@@ -44,7 +44,7 @@ export const projects = [
     id: 6,
     title: "Cricket IPL Data Analysis",
     description: "Evaluation of Player Performance in the Indian Premiere League (2008-2022)",
-    tags: ["Python", "Data Analysis", "Jupyter", "Cricket"],
+    tags: ["Python", "Data Analysis", "Jupyter", "Pandas", "Matplotlib"],
     liveUrl: "https://github.com/ojusharma/Cricket-IPL-Data-Analysis",
     detailsUrl: "https://github.com/ojusharma/Cricket-IPL-Data-Analysis"
   },
@@ -52,7 +52,7 @@ export const projects = [
     id: 7,
     title: "Portfolio Website",
     description: "'cause every dev must have a portfolio :)",
-    tags: ["React", "CSS", "Vite", "Portfolio"],
+    tags: ["React", "CSS", "Vite"],
     liveUrl: "https://github.com/ojusharma/new-portfolio",
     detailsUrl: "https://github.com/ojusharma/new-portfolio"
   }
