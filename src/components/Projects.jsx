@@ -28,7 +28,6 @@ const ProjectCard = ({ project }) => {
         </div>
 
         <div className="project-footer">
-          <span className="project-tech">{project.techStack}</span>
           <div className="project-links">
             <a 
               href={project.detailsUrl} 
@@ -36,7 +35,7 @@ const ProjectCard = ({ project }) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Details →
+              GitHub →
             </a>
           </div>
         </div>

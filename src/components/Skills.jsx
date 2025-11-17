@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import { skills } from '../data/skills';
 import './Skills.css';
 
-const SkillCategory = ({ title, items, color, isOpen, onToggle }) => {
+const SkillCategory = ({ title, items, color, isOpen, onToggle, row, isRowHovered, onRowHover }) => {
   return (
-    <div className={`skill-category ${isOpen ? 'open' : 'closed'}`}>
+    <div 
+      className={`skill-category ${isOpen ? 'open' : 'closed'} ${isRowHovered ? 'row-hovered' : ''}`}
+      onMouseEnter={() => onRowHover(row)}
+      onMouseLeave={() => onRowHover(null)}
+    >
       <button 
         className="skill-category-header"
         onClick={onToggle}
@@ -14,7 +18,7 @@ const SkillCategory = ({ title, items, color, isOpen, onToggle }) => {
           {title}
         </h3>
         <span className="toggle-icon" style={{ color }}>
-          {isOpen ? '▼' : '▶'}
+          {isOpen ? '▼' : ''}
         </span>
       </button>
       {isOpen && (
@@ -32,6 +36,7 @@ const SkillCategory = ({ title, items, color, isOpen, onToggle }) => {
 
 const Skills = () => {
   const [openCategories, setOpenCategories] = useState({});
+  const [hoveredRow, setHoveredRow] = useState(null);
 
   const handleToggle = (categoryKey) => {
     const category = categories.find(cat => cat.key === categoryKey);
@@ -78,6 +83,9 @@ const Skills = () => {
             color={category.color}
             isOpen={openCategories[category.key]}
             onToggle={() => handleToggle(category.key)}
+            row={category.row}
+            isRowHovered={hoveredRow === category.row}
+            onRowHover={setHoveredRow}
           />
         ))}
       </div>
