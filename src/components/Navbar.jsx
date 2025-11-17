@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -42,8 +45,6 @@ const Navbar = () => {
     { id: 'contact', label: '/contact' },
   ];
 
-  const loveSection = { id: 'love', label: '/love' };
-
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="navbar-content">
@@ -65,13 +66,6 @@ const Navbar = () => {
               {item.label}
             </button>
           ))}
-          <button
-            className="nav-link love-link"
-            onClick={() => scrollToSection('contact')}
-            title="Things I love"
-          >
-            {loveSection.label}
-          </button>
         </div>
       </div>
     </nav>

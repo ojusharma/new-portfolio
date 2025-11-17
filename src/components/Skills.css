@@ -29,28 +29,65 @@
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid #222;
   border-radius: 12px;
-  padding: 2rem;
   transition: all 0.3s ease;
+  overflow: hidden;
 }
 
-.skill-category:hover {
+.skill-category.open {
   background: rgba(255, 255, 255, 0.05);
-  border-color: #333;
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.skill-category-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  border: none;
+  padding: 1.5rem 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.skill-category-header:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.skill-category.open .skill-category-header {
+  border-bottom-color: #222;
 }
 
 .skill-category-title {
   font-size: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin: 0;
   font-weight: 600;
   font-family: 'Courier New', monospace;
+  text-align: left;
+}
+
+.toggle-icon {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
 }
 
 .skill-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
+  padding: 1.5rem 2rem 2rem;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .skill-tag {

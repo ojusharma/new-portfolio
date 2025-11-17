@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { experiences } from '../data/experience';
 import './Experience.css';
 
-const ExperienceItem = ({ experience }) => {
-  const [activeView, setActiveView] = useState(null); // null, 'details', or 'techstack'
+const ExperienceItem = ({ experience, activeView, onToggle }) => {
   const [displayedLines, setDisplayedLines] = useState([]);
   const [currentLine, setCurrentLine] = useState(0);
 
@@ -27,15 +26,9 @@ const ExperienceItem = ({ experience }) => {
   }, [activeView, currentLine, experience.details, experience.techStack]);
 
   const handleToggle = (view) => {
-    if (activeView === view) {
-      setActiveView(null);
-      setDisplayedLines([]);
-      setCurrentLine(0);
-    } else {
-      setActiveView(view);
-      setDisplayedLines([]);
-      setCurrentLine(0);
-    }
+    onToggle(experience.id, view);
+    setDisplayedLines([]);
+    setCurrentLine(0);
   };
 
   return (
@@ -125,6 +118,23 @@ const ExperienceItem = ({ experience }) => {
 };
 
 const Experience = () => {
+  const [activeItems, setActiveItems] = useState({});
+
+  const handleToggle = (expId, view) => {
+    setActiveItems(prev => {
+      const currentView = prev[expId];
+      if (currentView === view) {
+        // Close if clicking the same button
+        const newState = { ...prev };
+        delete newState[expId];
+        return newState;
+      } else {
+        // Open the clicked view for this experience only
+        return { [expId]: view };
+      }
+    });
+  };
+
   return (
     <section id="experience" className="experience-section">
       <h2 className="section-title">
@@ -133,7 +143,12 @@ const Experience = () => {
 
       <div className="experience-list">
         {experiences.map((exp) => (
-          <ExperienceItem key={exp.id} experience={exp} />
+          <ExperienceItem 
+            key={exp.id} 
+            experience={exp}
+            activeView={activeItems[exp.id] || null}
+            onToggle={handleToggle}
+          />
         ))}
       </div>
     </section>

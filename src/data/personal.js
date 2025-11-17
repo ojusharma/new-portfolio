@@ -1,4 +1,3 @@
-// Edit this file to update your personal information
 export const personalInfo = {
   name: "OJUS SHARMA",
   title: "Computer Science + Data Science Minor",
@@ -6,5 +5,5 @@ export const personalInfo = {
   graduation: "Graduating May 2026",
   tagline: "I enjoy thoughtful development.",
   location: "Based in Canada · Open to 2026 New Grad Roles :)",
-  profileImage: "/profile.jpeg" // Add your profile image to public folder
+  profileImage: "/profile.jpeg"
 };

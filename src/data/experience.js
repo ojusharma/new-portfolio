@@ -4,7 +4,7 @@ export const experiences = [
     company: "Boeing - Vancouver",
     role: "Software Development Co-op Intern",
     period: "Sep 2024 - Present",
-    description: "Currently working Part-Time, after a 12 month Co-op. \nEnhanced backend systems and platform reliability through strategic refactoring, CI/CD modernization, and security hardening across microservices.",
+    description: "Currently working Part-Time, after a 12 month Co-op. \nEnhanced Java Spring Boot backend systems and platform reliability through strategic refactoring, CI/CD modernization, and security hardening across microservices.",
     details: [
       "Enhanced Java Spring Boot microservice  that scans the database for expiring user-issued OAuth clients, preventing automated revocation of a newly onboarded Azure Service Principal and preserving API availability.",
       "Revamped 20+ CI/CD pipelines across 11 microservices by implementing dynamic value injection, reusable templates & automated versioning (Docker, Kubernetes, Bash, Linux), reducing deployment times & saving 100+ hours annually.",

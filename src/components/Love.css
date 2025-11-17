@@ -1,0 +1,79 @@
+.love-page {
+  min-height: 100vh;
+  padding: 6rem 2rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.love-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 0;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.love-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+.love-section .section-title,
+.love-section .love-content {
+  position: relative;
+  z-index: 2;
+}
+
+#formula1 {
+  background-image: url('/path-to-your-f1-image.jpg');
+}
+
+.love-content {
+  max-width: 800px;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.love-description {
+  font-size: 1.1rem;
+  color: #b0b0b0;
+  line-height: 1.8;
+}
+
+.footer {
+  margin-top: auto;
+  padding-top: 3rem;
+  text-align: center;
+  border-top: 1px solid #222;
+}
+
+.footer p {
+  color: #666;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .love-page {
+    padding: 3rem 1rem 2rem;
+  }
+
+  .love-section {
+    min-height: auto;
+    padding: 3rem 0;
+  }
+
+  .love-description {
+    font-size: 1rem;
+  }
+}
