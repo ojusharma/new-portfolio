@@ -2,8 +2,7 @@ export const skills = {
   languages: [
     "Python",
     "Java",
-    "C/C++",
-    "JavaScript (ES6+)",
+    "JavaScript",
     "TypeScript",
     "SQL",
     "Bash",
@@ -12,18 +11,17 @@ export const skills = {
     "MIPS Assembly"
   ],
   frameworks: [
-    "React (Router v7, Hooks, Redux)",
+    "Java Spring Boot",
+    "React Router",
     "Node.js",
-    "Express.js",
     "Django",
     "Flask",
-    "Java Spring Boot",
     "SQLAlchemy",
     "Android (Android Studio, Gradle)"
   ],
   devOps: [
+    "Linux/Ubuntu",
     "Docker",
-    "Docker Compose",
     "Kubernetes",
     "Helm",
     "GitHub Actions",
@@ -32,7 +30,6 @@ export const skills = {
     "Git & GitHub",
     "JFrog Artifactory",
     "Twistlock",
-    "Linux/Ubuntu"
   ],
   cloud: [
     "Microsoft Azure (Application Insights, Service Bus, Cosmos DB, Monitor)",
@@ -44,9 +41,8 @@ export const skills = {
     "PostgreSQL",
     "MySQL",
     "SQLite",
-    "SQL Server",
-    "MongoDB",
-    "Cosmos DB"
+    "Cosmos DB",
+    "NoSQL"
   ],
   testing: [
     "pytest",
