@@ -158,6 +158,91 @@
   background: rgba(0, 217, 255, 0.3);
 }
 
+.view-btn.commentary-btn {
+  background: rgba(255, 100, 100, 0.1);
+  border-color: #ff6b6b;
+  color: #ff6b6b;
+}
+
+.view-btn.commentary-btn:hover {
+  background: rgba(255, 100, 100, 0.3);
+}
+
+.view-btn.commentary-btn.active {
+  background: rgba(255, 100, 100, 0.4);
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(255, 107, 107, 0.5); }
+  50% { box-shadow: 0 0 15px rgba(255, 107, 107, 0.8); }
+}
+
+/* Commentary Popup */
+.commentary-popup {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.commentary-popup-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid #ff6b6b;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  max-width: 400px;
+  box-shadow: 0 4px 20px rgba(255, 107, 107, 0.3);
+}
+
+.commentary-icon {
+  font-size: 1.5rem;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.commentary-text {
+  color: #fff;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.commentary-close {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0 0.25rem;
+  transition: color 0.2s ease;
+}
+
+.commentary-close:hover {
+  color: #fff;
+}
+
 .canvas-container canvas {
   width: 100% !important;
   height: 100% !important;
@@ -197,10 +282,35 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   gap: 2rem;
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.commentary-panel-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid #222;
+  color: #ff6b6b;
+  padding: 1rem 1.5rem;
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  min-width: 200px;
+}
+
+.commentary-panel-btn:hover {
+  background: rgba(255, 100, 100, 0.1);
+  border-color: #ff6b6b;
+}
+
+.commentary-panel-btn.active {
+  background: rgba(255, 100, 100, 0.2);
+  border-color: #ff6b6b;
+  animation: pulse-glow 1.5s ease-in-out infinite;
 }
 
 .control-group {
