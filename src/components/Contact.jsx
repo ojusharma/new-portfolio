@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { contactInfo } from '../data/contact';
 import './Contact.css';
 
 const Contact = () => {
+  const navigate = useNavigate();
   const [isHoveringEmail, setIsHoveringEmail] = useState(false);
   const [isHoveringGithub, setIsHoveringGithub] = useState(false);
   const [isHoveringLinkedin, setIsHoveringLinkedin] = useState(false);
@@ -94,6 +96,9 @@ const Contact = () => {
       </div>
 
       <footer className="footer">
+        <button className="f1-easter-egg" onClick={() => navigate('/f1')}>
+          $ view-f1-car
+        </button>
         <p>© 2025 • Built with Redbulls & Passion</p>
       </footer>
     </section>

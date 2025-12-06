@@ -32,9 +32,24 @@ const Navbar = () => {
   }, []);
 
   const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (location.pathname !== '/') {
+      window.location.href = '/#' + sectionId;
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
+  const handleLogoClick = () => {
+    if (location.pathname !== '/') {
+      window.location.href = '/';
+    } else {
+      const element = document.getElementById('home');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -49,8 +64,8 @@ const Navbar = () => {
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="navbar-content">
         <button 
-          className="nav-logo"Frevamped
-          onClick={() => scrollToSection('home')}
+          className="nav-logo"
+          onClick={handleLogoClick}
         >
           <span className="logo-ls">$</span>
           <span className="logo-portfolio">ls portfolio</span>

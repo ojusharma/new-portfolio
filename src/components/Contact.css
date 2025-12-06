@@ -87,6 +87,26 @@
   border-top: 1px solid #222;
 }
 
+.f1-easter-egg {
+  background: none;
+  border: 1px solid #333;
+  color: #666;
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.f1-easter-egg:hover {
+  background: rgba(225, 6, 0, 0.1);
+  border-color: #e10600;
+  color: #e10600;
+  box-shadow: 0 0 15px rgba(225, 6, 0, 0.3);
+}
+
 .footer p {
   color: #666;
   font-family: 'Courier New', monospace;
