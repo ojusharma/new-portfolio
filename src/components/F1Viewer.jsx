@@ -176,7 +176,7 @@ const F1Viewer = () => {
     <div className="f1-viewer-page">
       <div className="f1-header">
         <h1 className="f1-title">
-          <span className="section-symbol">/</span>f1-viewer
+          <span className="section-symbol">/</span>f1
         </h1>
         <p className="f1-subtitle">McLaren MCL39 - 2025 F1 Car</p>
         <p className="f1-tagline">My favourite hobby, visualized for you :)</p>
