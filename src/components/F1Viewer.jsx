@@ -1,6 +1,6 @@
 import React, { Suspense, useRef, useState, useEffect } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { OrbitControls, useGLTF, Environment, Html, ContactShadows, Center, PerspectiveCamera } from '@react-three/drei';
+import { OrbitControls, useGLTF, Environment, Html, ContactShadows, Center, PerspectiveCamera, useProgress } from '@react-three/drei';
 import './F1Viewer.css';
 
 function F1Car({ isRotating, resetRotation }) {
@@ -42,10 +42,24 @@ function F1Car({ isRotating, resetRotation }) {
 useGLTF.preload('/f1-2025_mclaren_mcl39.glb');
 
 function Loader() {
+  const { progress } = useProgress();
+  const [dots, setDots] = useState('');
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDots(prev => prev.length >= 3 ? '' : prev + '.');
+    }, 400);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <Html center>
       <div className="loader">
-        <span className="loader-text">Loading McLaren MCL39...</span>
+        <span className="loader-text">Loading McLaren MCL39{dots}</span>
+        <div className="loader-progress-bar">
+          <div className="loader-progress-fill" style={{ width: `${progress}%` }} />
+        </div>
+        <span className="loader-percent">{progress.toFixed(0)}%</span>
       </div>
     </Html>
   );
@@ -81,6 +95,8 @@ const F1Viewer = () => {
   const [autoRotate, setAutoRotate] = useState(true);
   const [currentView, setCurrentView] = useState('full');
   const [resetKey, setResetKey] = useState(0);
+  const [controlsOpen, setControlsOpen] = useState(false);
+  const [infoOpen, setInfoOpen] = useState(false);
   const controlsRef = useRef();
 
   useEffect(() => {
@@ -195,28 +211,37 @@ const F1Viewer = () => {
       </div>
 
       <div className="controls-panel">
-        <div className="control-group instructions">
-          <h3 className="control-title">$ cat controls.txt</h3>
-          <ul className="instructions-list">
-            <li><span className="key">Drag</span> Rotate camera</li>
-            <li><span className="key">Scroll</span> Zoom in/out</li>
-            <li><span className="key">Right-drag</span> Pan view</li>
-          </ul>
+        <div className={`control-group instructions ${controlsOpen ? 'open' : ''}`}>
+          <h3 className="control-title" onClick={() => setControlsOpen(!controlsOpen)}>
+            <span className="collapse-icon">{controlsOpen ? '▼' : '▶'}</span>
+            $ cat controls.txt
+          </h3>
+          {controlsOpen && (
+            <ul className="instructions-list">
+              <li><span className="key">Drag</span> Rotate camera</li>
+              <li><span className="key">Scroll</span> Zoom in/out</li>
+              <li><span className="key">Right-drag</span> Pan view</li>
+            </ul>
+          )}
         </div>
 
-        <div className="control-group">
-          <h3 className="control-title">$ cat info.txt</h3>
-          <p className="model-credit">
-            Model: McLaren MCL39 (2025)<br />
-            <a href="https://sketchfab.com/3d-models/f1-2025-mclaren-mcl39-75101b4aefc54b9cb0b670d6f016f0dd" target="_blank" rel="noopener noreferrer" className="credit-link">
-              View on Sketchfab →
-            </a>
-          </p>
+        <div className={`control-group ${infoOpen ? 'open' : ''}`}>
+          <h3 className="control-title" onClick={() => setInfoOpen(!infoOpen)}>
+            <span className="collapse-icon">{infoOpen ? '▼' : '▶'}</span>
+            $ cat info.txt
+          </h3>
+          {infoOpen && (
+            <p className="model-credit">
+              Model: McLaren MCL39 (2025)<br />
+              <a href="https://sketchfab.com/3d-models/f1-2025-mclaren-mcl39-75101b4aefc54b9cb0b670d6f016f0dd" target="_blank" rel="noopener noreferrer" className="credit-link">
+                View on Sketchfab →
+              </a>
+            </p>
+          )}
         </div>
       </div>
-
       <footer className="f1-footer">
-        <p>© 2025 • Built with Three.js & React Three Fiber</p>
+        <p>© 2025 • Built with More RedBulls & More Passion</p>
       </footer>
     </div>
   );
