@@ -68,25 +68,42 @@ const Skills = () => {
     { key: 'tools', title: 'Tools & APIs', items: skills.tools, color: '#9b59b6', row: 3 },
     { key: 'softSkills', title: 'Soft Skills', items: skills.softSkills, color: '#2ecc71', row: 3 }
   ];
+
+  // Group categories by row
+  const rows = [1, 2, 3].map(rowNum => 
+    categories.filter(cat => cat.row === rowNum)
+  );
+
   return (
     <section id="skills" className="skills-section">
       <h2 className="section-title">
         <span className="section-symbol">/</span>skills
       </h2>
 
-      <div className="skills-grid">
-        {categories.map((category) => (
-          <SkillCategory
-            key={category.key}
-            title={category.title}
-            items={category.items}
-            color={category.color}
-            isOpen={openCategories[category.key]}
-            onToggle={() => handleToggle(category.key)}
-            row={category.row}
-            isRowHovered={hoveredRow === category.row}
-            onRowHover={setHoveredRow}
-          />
+      <div className="skills-rows">
+        {rows.map((rowCategories, rowIndex) => (
+          <div 
+            key={rowIndex} 
+            className={`skill-row ${hoveredRow === rowIndex + 1 ? 'row-active' : ''}`}
+          >
+            {rowCategories.map((category, catIndex) => (
+              <React.Fragment key={category.key}>
+                <SkillCategory
+                  title={category.title}
+                  items={category.items}
+                  color={category.color}
+                  isOpen={openCategories[category.key]}
+                  onToggle={() => handleToggle(category.key)}
+                  row={category.row}
+                  isRowHovered={hoveredRow === category.row}
+                  onRowHover={setHoveredRow}
+                />
+                {catIndex < rowCategories.length - 1 && (
+                  <div className="row-connector" style={{ '--row-color': category.color }} />
+                )}
+              </React.Fragment>
+            ))}
+          </div>
         ))}
       </div>
     </section>
