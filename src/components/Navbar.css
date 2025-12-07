@@ -76,24 +76,28 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: #FFA500;
+  background: #00d9ff;
   transition: width 0.3s ease;
 }
 
 .nav-link:hover {
-  color: #fff;
+  color: #00d9ff;
+  text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
 }
 
 .nav-link:hover::after {
   width: 100%;
+  box-shadow: 0 0 10px rgba(0, 217, 255, 0.7);
 }
 
 .nav-link.active {
-  color: #fff;
+  color: #00d9ff;
+  text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
 }
 
 .nav-link.active::after {
   width: 100%;
+  box-shadow: 0 0 10px rgba(0, 217, 255, 0.7);
 }
 
 .love-link::after {

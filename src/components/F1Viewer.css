@@ -63,8 +63,8 @@
 
 .f1-header {
   text-align: center;
-  padding: 2rem;
-  margin-top: 70px;
+  padding: 2rem 2rem 0.5rem 2rem;
+  margin-top: 30px;
 }
 
 .f1-title {
@@ -112,16 +112,37 @@
 
 .view-buttons {
   position: absolute;
-  bottom: 1rem;
+  top: 1rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
-  display: flex;
-  gap: 0.5rem;
   background: rgba(0, 0, 0, 0.7);
   padding: 0.5rem;
   border-radius: 8px;
   border: 1px solid #333;
+}
+
+.camera-options-label {
+  color: #FFA500;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  display: block;
+}
+
+.camera-options-dropdown {
+  display: none;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.view-buttons:hover .camera-options-dropdown {
+  display: flex;
+}
+
+.view-buttons:hover .camera-options-label {
+  display: none;
 }
 
 .view-btn {
@@ -283,8 +304,8 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
-  padding: 2rem;
+  gap: 1rem;
+  padding: 1rem 2rem 1.5rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -426,6 +447,22 @@
   text-align: center;
   padding: 1.5rem;
   border-top: 1px solid #222;
+}
+
+.f1-footer .model-credit {
+  margin-bottom: 0.5rem;
+}
+
+.f1-footer .model-credit a {
+  color: #888;
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.f1-footer .model-credit a:hover {
+  color: #FFA500;
 }
 
 .f1-footer p {

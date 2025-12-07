@@ -1,6 +1,7 @@
 import React, { Suspense, useRef, useState, useEffect, useCallback } from 'react';
+import * as THREE from 'three';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { OrbitControls, useGLTF, Environment, Html, ContactShadows, Center, PerspectiveCamera, useProgress } from '@react-three/drei';
+import { OrbitControls, useGLTF, Environment, Html, ContactShadows, Center, PerspectiveCamera, useProgress, Grid } from "@react-three/drei";
 import './F1Viewer.css';
 
 function F1Car({ isRotating, resetRotation }) {
@@ -92,20 +93,19 @@ const CAMERA_VIEWS = {
 };
 
 const COMMENTARY_DATA = [
-  { id: 3, file: '/commentary/commentary2.mp3', context: '2024 Monaco GP: Charles Leclerc finally wins his home race after years of heartbreak, becoming the first Monégasque winner since Louis Chiron in 1931.' },
-  { id: 2, file: '/commentary/commentary3.mp3', context: '2010 Abu Dhabi GP: "The moment Vettel (my fav) became the youngest World Champion in F1 history at just 23 years old.' },
   { id: 1, file: '/commentary/commentary1.mp3', context: '2021 Abu Dhabi GP: Max Verstappen beats Hamilton to win his first World Championship.' },
+  { id: 2, file: '/commentary/commentary3.mp3', context: '2010 Abu Dhabi GP: "The moment Vettel (my fav) became the youngest World Champion in F1 history at just 23 years old.' },
+  { id: 3, file: '/commentary/commentary2.mp3', context: '2024 Monaco GP: Charles Leclerc finally wins his home race after years of heartbreak, becoming the first Monégasque winner since Louis Chiron in 1931.' },
 ];
 
 const F1Viewer = () => {
   const [autoRotate, setAutoRotate] = useState(true);
   const [currentView, setCurrentView] = useState('full');
   const [resetKey, setResetKey] = useState(0);
-  const [controlsOpen, setControlsOpen] = useState(false);
-  const [infoOpen, setInfoOpen] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentCommentary, setCurrentCommentary] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
+  const [playedIndices, setPlayedIndices] = useState([]);
   const controlsRef = useRef();
   const audioRef = useRef(null);
 
@@ -128,8 +128,20 @@ const F1Viewer = () => {
       audioRef.current = null;
     }
 
-    const randomIndex = Math.floor(Math.random() * COMMENTARY_DATA.length);
+    // Get available indices (ones that haven't been played)
+    let availableIndices = COMMENTARY_DATA.map((_, i) => i).filter(i => !playedIndices.includes(i));
+    
+    // If all have been played, reset and start over
+    if (availableIndices.length === 0) {
+      availableIndices = COMMENTARY_DATA.map((_, i) => i);
+      setPlayedIndices([]);
+    }
+
+    const randomIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
     const commentary = COMMENTARY_DATA[randomIndex];
+    
+    // Mark this one as played
+    setPlayedIndices(prev => [...prev, randomIndex]);
     
     const audio = new Audio(commentary.file);
     audioRef.current = audio;
@@ -150,7 +162,7 @@ const F1Viewer = () => {
       setCurrentCommentary(null);
       audioRef.current = null;
     };
-  }, []);
+  }, [playedIndices]);
 
   const stopCommentary = useCallback(() => {
     if (audioRef.current) {
@@ -176,50 +188,61 @@ const F1Viewer = () => {
     <div className="f1-viewer-page">
       <div className="f1-header">
         <h1 className="f1-title">
-          <span className="section-symbol">/</span>f1
+          f1
         </h1>
-        <p className="f1-subtitle">McLaren MCL39 - 2025 F1 Car</p>
-        <p className="f1-tagline">My favourite hobby, visualized for you :)</p>
+        <p className="f1-tagline">my favourite hobby - visualized for you - it's interactive!</p>
+      </div>
+
+      <div className="controls-panel">
+        <button 
+          className={`commentary-panel-btn ${isPlaying ? 'active' : ''}`}
+          onClick={isPlaying ? stopCommentary : playRandomCommentary}
+        >
+          {isPlaying ? '⏹ Stop Radio' : 'Play Radio Messages 🎙'}
+        </button>
       </div>
 
       <div className="canvas-container">
         <div className="view-buttons">
-          <button 
-            className={`view-btn ${currentView === 'full' ? 'active' : ''}`}
-            onClick={() => handleViewChange('full')}
-          >
-            Full Car
-          </button>
-          <button 
-            className={`view-btn ${currentView === 'driver' ? 'active' : ''}`}
-            onClick={() => handleViewChange('driver')}
-          >
-            Driver POV
-          </button>
-          <button 
-            className={`view-btn ${currentView === 'front' ? 'active' : ''}`}
-            onClick={() => handleViewChange('front')}
-          >
-            Front View
-          </button>
-          <button 
-            className={`view-btn ${currentView === 'side' ? 'active' : ''}`}
-            onClick={() => handleViewChange('side')}
-          >
-            Side View
-          </button>
-          <button 
-            className="view-btn reset-btn"
-            onClick={() => handleViewChange('reset')}
-          >
-            Reset
-          </button>
-          <button 
-            className={`view-btn ${autoRotate ? 'active' : ''}`}
-            onClick={() => setAutoRotate(!autoRotate)}
-          >
-            {autoRotate ? '⏸ Pause' : '▶ Rotate'}
-          </button>
+          <span className="camera-options-label">Camera Options</span>
+          <div className="camera-options-dropdown">
+            <button 
+              className={`view-btn ${currentView === 'full' ? 'active' : ''}`}
+              onClick={() => handleViewChange('full')}
+            >
+              Full Car
+            </button>
+            <button 
+              className={`view-btn ${currentView === 'driver' ? 'active' : ''}`}
+              onClick={() => handleViewChange('driver')}
+            >
+              Driver POV
+            </button>
+            <button 
+              className={`view-btn ${currentView === 'front' ? 'active' : ''}`}
+              onClick={() => handleViewChange('front')}
+            >
+              Front View
+            </button>
+            <button 
+              className={`view-btn ${currentView === 'side' ? 'active' : ''}`}
+              onClick={() => handleViewChange('side')}
+            >
+              Side View
+            </button>
+            <button 
+              className="view-btn reset-btn"
+              onClick={() => handleViewChange('reset')}
+            >
+              Reset
+            </button>
+            <button 
+              className={`view-btn ${autoRotate ? 'active' : ''}`}
+              onClick={() => setAutoRotate(!autoRotate)}
+            >
+              {autoRotate ? '⏸ Pause' : '▶ Rotate'}
+            </button>
+          </div>
         </div>
 
         {showPopup && currentCommentary && (
@@ -259,10 +282,89 @@ const F1Viewer = () => {
             <F1Car isRotating={autoRotate && !isPlaying} resetRotation={resetKey} />
             <ContactShadows
               position={[0, -1.5, 0]}
-              opacity={0.6}
+              opacity={0.4}
               scale={15}
               blur={2.5}
               far={5}
+            />
+            <Grid
+              position={[0, -3.5, 0]}
+              args={[100, 100]}
+              cellSize={0.5}
+              cellThickness={0.5}
+              cellColor="#00d9ff"
+              sectionSize={3}
+              sectionThickness={1}
+              sectionColor="#FFA500"
+              fadeDistance={50}
+              fadeStrength={1}
+              followCamera={false}
+              infiniteGrid={true}
+              side={THREE.DoubleSide}
+            />
+            <Grid
+              position={[0, 20, -50]}
+              rotation={[Math.PI / 2, 0, 0]}
+              args={[100, 100]}
+              cellSize={0.5}
+              cellThickness={0.5}
+              cellColor="#00d9ff"
+              sectionSize={3}
+              sectionThickness={1}
+              sectionColor="#FFA500"
+              fadeDistance={50}
+              fadeStrength={1}
+              followCamera={false}
+              infiniteGrid={true}
+              side={THREE.DoubleSide}
+            />
+            <Grid
+              position={[0, 20, 50]}
+              rotation={[Math.PI / 2, 0, 0]}
+              args={[100, 100]}
+              cellSize={0.5}
+              cellThickness={0.5}
+              cellColor="#00d9ff"
+              sectionSize={3}
+              sectionThickness={1}
+              sectionColor="#FFA500"
+              fadeDistance={50}
+              fadeStrength={1}
+              followCamera={false}
+              infiniteGrid={true}
+              side={THREE.DoubleSide}
+            />
+            <Grid
+              position={[-50, 20, 0]}
+              rotation={[Math.PI / 2, 0, Math.PI / 2]}
+              args={[100, 100]}
+              cellSize={0.5}
+              cellThickness={0.5}
+              cellColor="#00d9ff"
+              sectionSize={3}
+              sectionThickness={1}
+              sectionColor="#FFA500"
+              fadeDistance={50}
+              fadeStrength={1}
+              followCamera={false}
+              infiniteGrid={true}
+              side={THREE.DoubleSide}
+            />
+            <Grid
+              position={[50, 20, 0]}
+              rotation={[Math.PI / 2, 0, Math.PI / 2]}
+              args={[100, 100]}
+              cellSize={0.5}
+              cellThickness={0.5}
+              cellColor="#00d9ff"
+              sectionSize={3}
+              sectionThickness={1}
+              sectionColor="#FFA500"
+              fadeDistance={50}
+              fadeStrength={1}
+              followCamera={false}
+              infiniteGrid={true}
+              side={THREE.DoubleSide}
             />
             <Environment preset="city" />
           </Suspense>
@@ -278,45 +380,10 @@ const F1Viewer = () => {
           <CameraController view={currentView} controlsRef={controlsRef} />
         </Canvas>
       </div>
-
-      <div className="controls-panel">
-        <div className={`control-group instructions ${controlsOpen ? 'open' : ''}`}>
-          <h3 className="control-title" onClick={() => setControlsOpen(!controlsOpen)}>
-            <span className="collapse-icon">{controlsOpen ? '▼' : '▶'}</span>
-            $ cat controls.txt
-          </h3>
-          {controlsOpen && (
-            <ul className="instructions-list">
-              <li><span className="key">Drag</span> Rotate camera</li>
-              <li><span className="key">Scroll</span> Zoom in/out</li>
-              <li><span className="key">Right-drag</span> Pan view</li>
-            </ul>
-          )}
-        </div>
-
-        <button 
-          className={`commentary-panel-btn ${isPlaying ? 'active' : ''}`}
-          onClick={isPlaying ? stopCommentary : playRandomCommentary}
-        >
-          {isPlaying ? '⏹ Stop Commentary' : 'Play Commentary 🎙'}
-        </button>
-
-        <div className={`control-group ${infoOpen ? 'open' : ''}`}>
-          <h3 className="control-title" onClick={() => setInfoOpen(!infoOpen)}>
-            <span className="collapse-icon">{infoOpen ? '▼' : '▶'}</span>
-            $ cat info.txt
-          </h3>
-          {infoOpen && (
-            <p className="model-credit">
-              Model: McLaren MCL39 (2025)<br />
-              <a href="https://sketchfab.com/3d-models/f1-2025-mclaren-mcl39-75101b4aefc54b9cb0b670d6f016f0dd" target="_blank" rel="noopener noreferrer" className="credit-link">
-                View on Sketchfab →
-              </a>
-            </p>
-          )}
-        </div>
-      </div>
       <footer className="f1-footer">
+        <p className="model-credit">
+          Model: McLaren MCL39 (2025) • <a href="https://sketchfab.com/3d-models/f1-2025-mclaren-mcl39-75101b4aefc54b9cb0b670d6f016f0dd" target="_blank" rel="noopener noreferrer" className="credit-link">View on Sketchfab</a>
+        </p>
         <p>© 2025 • Built with More RedBulls & More Passion</p>
       </footer>
     </div>

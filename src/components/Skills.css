@@ -1,8 +1,7 @@
 .skills-section {
-  min-height: 100vh;
-  padding: 6rem 2rem;
+  padding: 6rem 2rem 2rem;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 auto 4rem;
 }
 
 /* Reduce bottom padding on mobile to minimize gap with next section */

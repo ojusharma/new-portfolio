@@ -6,6 +6,7 @@ import Experience from './components/Experience';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
+import Footer from './components/Footer';
 import Love from './components/Love';
 import F1Viewer from './components/F1Viewer';
 import './App.css';
@@ -44,6 +45,7 @@ function AppContent() {
               <Skills />
               <Projects />
               <Contact />
+              <Footer />
             </>
           } />
           <Route path="/love" element={<Love />} />
