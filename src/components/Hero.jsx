@@ -14,98 +14,19 @@ const Hero = () => {
   const [isComplete, setIsComplete] = useState(false);
   const timerRef = useRef(null);
   
-  // Runaway box state - random spawn position
-  const [boxPos, setBoxPos] = useState(() => ({
-    x: Math.random() * (window.innerWidth - 150) + 50,
-    y: Math.random() * (window.innerHeight - 200) + 100
-  }));
-  const [isChasing, setIsChasing] = useState(false);
-  const [hasStopped, setHasStopped] = useState(false);
-  const [targetCorner, setTargetCorner] = useState(null);
-  const boxRef = useRef(null);
+  // F1 box visibility state - appears after 7 seconds
+  const [showF1Box, setShowF1Box] = useState(false);
 
-  // Get corner positions
-  const getCornerPositions = () => {
-    const boxWidth = 80;
-    const boxHeight = 40;
-    const padding = 30;
-    return [
-      { x: padding, y: padding + 60 }, // top-left
-      { x: window.innerWidth - boxWidth - padding, y: padding + 60 }, // top-right
-      { x: padding, y: window.innerHeight - boxHeight - padding }, // bottom-left
-      { x: window.innerWidth - boxWidth - padding, y: window.innerHeight - boxHeight - padding }, // bottom-right
-    ];
-  };
-
-  // Choose random corner when chasing starts
+  // Show F1 box after 7 seconds
   useEffect(() => {
-    if (isChasing && !targetCorner && !hasStopped) {
-      const corners = getCornerPositions();
-      const randomCorner = corners[Math.floor(Math.random() * corners.length)];
-      setTargetCorner(randomCorner);
-    }
-  }, [isChasing, targetCorner, hasStopped]);
-
-  // Handle mouse movement for runaway box
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      if (hasStopped) return;
-      
-      const mouseX = e.clientX;
-      const mouseY = e.clientY;
-      
-      const boxWidth = 80;
-      const boxHeight = 40;
-      const safeDistance = 100;
-      
-      const boxCenterX = boxPos.x + boxWidth / 2;
-      const boxCenterY = boxPos.y + boxHeight / 2;
-      
-      const dx = mouseX - boxCenterX;
-      const dy = mouseY - boxCenterY;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-      
-      if (distance < safeDistance) {
-        if (!isChasing) {
-          setIsChasing(true);
-        }
-        
-        // Move towards target corner if we have one
-        if (targetCorner) {
-          const toCornerX = targetCorner.x - boxPos.x;
-          const toCornerY = targetCorner.y - boxPos.y;
-          const distanceToCorner = Math.sqrt(toCornerX * toCornerX + toCornerY * toCornerY);
-          
-          // Check if reached corner
-          if (distanceToCorner < 20) {
-            setHasStopped(true);
-            setIsChasing(false);
-            setBoxPos(targetCorner);
-            return;
-          }
-          
-          // Move towards corner
-          const moveSpeed = 20;
-          const newX = boxPos.x + (toCornerX / distanceToCorner) * moveSpeed;
-          const newY = boxPos.y + (toCornerY / distanceToCorner) * moveSpeed;
-          
-          setBoxPos({ x: newX, y: newY });
-        }
-      } else {
-        if (isChasing) {
-          setIsChasing(false);
-        }
-      }
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [boxPos, isChasing, hasStopped, targetCorner]);
+    const timer = setTimeout(() => {
+      setShowF1Box(true);
+    }, 7000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleBoxClick = () => {
-    if (hasStopped) {
-      navigate('/f1');
-    }
+    navigate('/f1');
   };
 
   useEffect(() => {
@@ -188,14 +109,9 @@ const Hero = () => {
         </div>
       </div>
 
-      {isComplete && (
+      {showF1Box && (
         <div
-          ref={boxRef}
-          className={`runaway-box ${hasStopped ? 'stopped' : ''} ${isChasing ? 'chasing' : ''} ${!hasStopped ? 'not-clickable' : ''}`}
-          style={{
-            left: `${boxPos.x}px`,
-            top: `${boxPos.y}px`,
-          }}
+          className="f1-box"
           onClick={handleBoxClick}
         >
           /f1
