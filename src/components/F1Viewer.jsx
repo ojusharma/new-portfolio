@@ -194,12 +194,15 @@ const F1Viewer = () => {
       </div>
 
       <div className="controls-panel">
-        <button 
-          className={`commentary-panel-btn ${isPlaying ? 'active' : ''}`}
-          onClick={isPlaying ? stopCommentary : playRandomCommentary}
-        >
-          {isPlaying ? '⏹ Stop Radio' : 'Play Radio Messages 🎙'}
-        </button>
+        <div className="radio-btn-wrapper">
+          <span className="sound-warning">This button plays sound</span>
+          <button 
+            className={`commentary-panel-btn ${isPlaying ? 'active' : ''}`}
+            onClick={isPlaying ? stopCommentary : playRandomCommentary}
+          >
+            {isPlaying ? '⏹ Stop Radio' : 'Play Radio Messages 🎙'}
+          </button>
+        </div>
       </div>
 
       <div className="canvas-container">
