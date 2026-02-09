@@ -104,6 +104,16 @@
   background: #ff006e;
 }
 
+.f1-link:hover {
+  color: #e10600;
+  text-shadow: 0 0 10px rgba(225, 6, 0, 0.5);
+}
+
+.f1-link:hover::after {
+  background: #e10600;
+  box-shadow: 0 0 10px rgba(225, 6, 0, 0.7);
+}
+
 /* Hamburger menu button */
 .hamburger {
   display: none;

@@ -60,7 +60,13 @@ const Navbar = () => {
     { id: 'skills', label: '/skills' },
     { id: 'projects', label: '/projects' },
     { id: 'contact', label: '/contact' },
+    { id: 'f1', label: '/f1', isF1: true },
   ];
+
+  const handleF1Click = () => {
+    setIsMobileMenuOpen(false);
+    navigate('/f1');
+  };
 
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
@@ -87,8 +93,8 @@ const Navbar = () => {
           {navItems.map((item) => (
             <button
               key={item.id}
-              className={`nav-link ${activeSection === item.id ? 'active' : ''}`}
-              onClick={() => scrollToSection(item.id)}
+              className={`nav-link ${activeSection === item.id ? 'active' : ''} ${item.isF1 ? 'f1-link' : ''}`}
+              onClick={() => item.isF1 ? handleF1Click() : scrollToSection(item.id)}
             >
               {item.label}
             </button>

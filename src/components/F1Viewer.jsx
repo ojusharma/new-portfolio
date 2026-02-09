@@ -385,7 +385,7 @@ const F1Viewer = () => {
       </div>
       <footer className="f1-footer">
         <p className="model-credit">
-          Model: McLaren MCL39 (2025) • <a href="https://sketchfab.com/3d-models/f1-2025-mclaren-mcl39-75101b4aefc54b9cb0b670d6f016f0dd" target="_blank" rel="noopener noreferrer" className="credit-link">View on Sketchfab</a>
+          Model: McLaren MCL39 (2025) • <a href="https://sketchfab.com/3d-models/f1-2025-mclaren-mcl39-c6194270002b401bb25be7e35ab56e34" target="_blank" rel="noopener noreferrer" className="credit-link">View on Sketchfab</a>
         </p>
         <p>© 2025 • Built with More RedBulls & More Passion</p>
       </footer>
