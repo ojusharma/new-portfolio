@@ -7,6 +7,7 @@ const Navbar = () => {
   const location = useLocation();
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,6 +33,7 @@ const Navbar = () => {
   }, []);
 
   const scrollToSection = (sectionId) => {
+    setIsMobileMenuOpen(false);
     if (location.pathname !== '/') {
       window.location.href = '/#' + sectionId;
     } else {
@@ -71,7 +73,17 @@ const Navbar = () => {
           <span className="logo-portfolio">ls portfolio</span>
         </button>
 
-        <div className="nav-links">
+        <button 
+          className={`hamburger ${isMobileMenuOpen ? 'open' : ''}`}
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div className={`nav-links ${isMobileMenuOpen ? 'open' : ''}`}>
           {navItems.map((item) => (
             <button
               key={item.id}

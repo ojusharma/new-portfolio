@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { skills } from '../data/skills';
 import './Skills.css';
 
@@ -37,8 +37,25 @@ const SkillCategory = ({ title, items, color, isOpen, onToggle, row, isRowHovere
 const Skills = () => {
   const [openCategories, setOpenCategories] = useState({});
   const [hoveredRow, setHoveredRow] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const handleToggle = (categoryKey) => {
+    if (isMobile) {
+      // On mobile, toggle only the clicked category
+      setOpenCategories(prev => ({
+        ...prev,
+        [categoryKey]: !prev[categoryKey]
+      }));
+      return;
+    }
+
     const category = categories.find(cat => cat.key === categoryKey);
     const categoryRow = category.row;
     

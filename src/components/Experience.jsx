@@ -36,7 +36,7 @@ const ExperienceItem = ({ experience, activeView, onToggle }) => {
       <div className="experience-header">
         <div className="experience-info">
           <h3 className="experience-role">
-            {experience.role} <span className="experience-company">— {experience.company}</span>
+            {experience.role} <span className="experience-company"><span className="company-dash">— </span>{experience.company}</span>
           </h3>
           <p className="experience-description">{experience.description}</p>
           
