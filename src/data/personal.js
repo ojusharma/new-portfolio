@@ -3,7 +3,7 @@ export const personalInfo = {
   title: "Computer Science + Data Science Minor",
   university: "The University of British Columbia",
   graduation: "Graduating May 2026",
-  tagline: "I enjoy thoughtful development.",
+  tagline: "Always looking to make an impact.",
   location: "Based in Canada · Open to 2026 New Grad Roles :)",
   profileImage: "/profile.jpeg"
 };
