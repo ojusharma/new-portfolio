@@ -96,9 +96,9 @@
 }
 
 .details-toggle {
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid #FFD700;
-  color: #FFD700;
+  background: transparent;
+  border: 1px solid rgba(255, 191, 0, 0.35);
+  color: rgba(255, 191, 0, 0.5);
   padding: 0.5rem 1rem;
   border-radius: 4px;
   cursor: pointer;
@@ -109,15 +109,15 @@
 }
 
 .details-toggle:hover {
-  background: rgba(255, 215, 0, 0.1);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+  border-color: rgba(255, 191, 0, 0.6);
+  color: rgba(255, 191, 0, 0.75);
+  background: rgba(255, 191, 0, 0.05);
 }
 
 .details-toggle.active {
-  background: rgba(0, 217, 255, 0.15);
-  border-color: #00d9ff;
-  color: #00d9ff;
+  background: rgba(0, 217, 255, 0.08);
+  border-color: rgba(0, 217, 255, 0.4);
+  color: rgba(0, 217, 255, 0.7);
 }
 
 /* Button Group */
