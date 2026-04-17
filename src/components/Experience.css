@@ -11,8 +11,9 @@
   margin-bottom: 4rem;
   color: #fff;
   font-weight: 700;
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
 }
+
 
 .section-symbol {
   color: #FFA500;
@@ -21,12 +22,12 @@
 .experience-list {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 .experience-item {
   background: rgba(255, 255, 255, 0.03);
-  border: 1px dashed #333;
+  border: 1px solid #1c1c1c;
   border-radius: 8px;
   padding: 2rem;
   transition: all 0.3s ease;
@@ -34,7 +35,7 @@
 
 .experience-item:hover {
   background: rgba(255, 255, 255, 0.05);
-  border-color: #444;
+  border-color: #2a2a2a;
   transform: translateY(-2px);
 }
 
@@ -49,23 +50,38 @@
   min-width: 0;
 }
 
-.experience-role {
-  font-size: 1.5rem;
-  color: #fff;
-  margin-bottom: 1rem;
-  font-weight: 600;
+.experience-title-block {
+  margin-bottom: 0.75rem;
   padding-right: 180px;
 }
 
-.experience-company {
-  font-weight: 400;
-  color: #a0a0a0;
+.experience-company-name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.35rem;
+  letter-spacing: -0.01em;
+}
+
+.experience-role-title {
+  font-size: 0.95rem;
+  color: #888;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.role-prefix {
+  color: #FFA500;
+  font-size: 1rem;
+  flex-shrink: 0;
 }
 
 .experience-description {
   color: #c0c0c0;
   margin-bottom: 1rem;
-  line-height: 1.6;
+  line-height: 1.75;
   font-size: 1.05rem;
 }
 
@@ -76,7 +92,7 @@
   color: #a0a0a0;
   font-size: 1.1rem;
   white-space: nowrap;
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .details-toggle {
@@ -86,10 +102,10 @@
   padding: 0.5rem 1rem;
   border-radius: 4px;
   cursor: pointer;
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.85rem;
   transition: all 0.3s ease;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
 }
 
 .details-toggle:hover {
@@ -109,7 +125,7 @@
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
 }
 
 /* Tech Stack Tags */
@@ -126,7 +142,7 @@
   color: #FFD700;
   padding: 0.5rem 1rem;
   border-radius: 4px;
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.9rem;
   opacity: 0;
   transform: scale(0.8);
@@ -202,13 +218,13 @@
   margin-left: auto;
   color: #666;
   font-size: 0.75rem;
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 /* Terminal Content */
 .terminal-content {
   padding: 1rem;
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 1rem;
   line-height: 2;
   color: #e0e0e0;
@@ -318,6 +334,11 @@
   margin-left: 0.25rem;
 }
 
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
 /* Custom scrollbar for terminal */
 .terminal-container::-webkit-scrollbar {
   width: 8px;
@@ -350,8 +371,8 @@
     padding: 1.5rem;
   }
 
-  .experience-role {
-    font-size: 1.3rem;
+  .experience-company-name {
+    font-size: 1.15rem;
   }
 }
 
@@ -383,10 +404,18 @@
     margin-bottom: 0.25rem;
   }
 
-  .experience-role {
-    font-size: 1.15rem;
-    margin-bottom: 0.5rem;
+  .experience-title-block {
     padding-right: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .experience-company-name {
+    font-size: 1.05rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .experience-role-title {
+    font-size: 0.88rem;
   }
 
   .experience-description {
@@ -436,19 +465,13 @@
     font-size: 0.85rem;
   }
 
-  .experience-role {
-    font-size: 1.05rem;
-    margin-bottom: 0.5rem;
-    padding-right: 0;
+  .experience-company-name {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
   }
 
-  .experience-company {
-    display: block;
-    margin-top: 0.25rem;
-  }
-
-  .company-dash {
-    display: none;
+  .experience-role-title {
+    font-size: 0.82rem;
   }
 
   .experience-description {

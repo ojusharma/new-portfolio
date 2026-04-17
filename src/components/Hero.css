@@ -25,9 +25,10 @@
   font-weight: 700;
   margin-bottom: 2rem;
   color: #fff;
-  letter-spacing: 0.05em;
+  letter-spacing: -0.02em;
   position: relative;
   display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .typewriter-cursor {
@@ -44,7 +45,7 @@
 .hero-details {
   margin-bottom: 2.5rem;
   color: #a0a0a0;
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
   line-height: 1.8;
 }
 
@@ -67,13 +68,13 @@
   font-size: 1.2rem;
   margin: 2.5rem 0;
   color: #fff;
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .hero-location {
   font-size: 1rem;
   color: #a0a0a0;
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .hero-image {
@@ -191,7 +192,7 @@
   border: 2px solid #FFA500;
   border-radius: 8px;
   color: #FFA500;
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;

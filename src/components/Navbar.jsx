@@ -10,6 +10,14 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    if (location.pathname === '/f1') {
+      setActiveSection('f1');
+    } else if (location.pathname === '/') {
+      setActiveSection('home');
+    }
+  }, [location.pathname]);
+
+  useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 

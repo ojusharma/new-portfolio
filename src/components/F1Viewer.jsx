@@ -188,7 +188,7 @@ const F1Viewer = () => {
     <div className="f1-viewer-page">
       <div className="f1-header">
         <h1 className="f1-title">
-          f1
+          <span className="section-symbol">/</span>f1
         </h1>
         <p className="f1-tagline">my favourite hobby - visualized for you - it's interactive!</p>
       </div>
@@ -200,7 +200,7 @@ const F1Viewer = () => {
             className={`commentary-panel-btn ${isPlaying ? 'active' : ''}`}
             onClick={isPlaying ? stopCommentary : playRandomCommentary}
           >
-            {isPlaying ? '⏹ Stop Radio' : 'Play Radio Messages 🎙'}
+            {isPlaying ? 'Stop Radio' : 'Play Radio Messages'}
           </button>
         </div>
       </div>

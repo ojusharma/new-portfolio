@@ -1,8 +1,8 @@
 export const experiences = [
   {
     id: 1,
-    company: "Boeing - Vancouver",
-    role: "Software Development Intern",
+    company: "Boeing",
+    role: "Software Development Intern, Vancouver",
     period: "Sep 2024 - Feb 2026",
     description: "\nEnhanced Java Spring Boot backend systems and platform reliability through strategic refactoring, CI/CD modernization, and security hardening across microservices.",
     details: [
@@ -23,7 +23,7 @@ export const experiences = [
   {
     id: 2,
     company: "University of British Columbia - Directed Studies",
-    role: "Software Developer",
+    role: "Software Developer, Kelowna",
     period: "Sep 2025 - Present",
     description: "Designing an AI system that leverages Large Language Models (LLMs) to personalize computer science practice problems based on individual student profiles and preferences.",
     details: [

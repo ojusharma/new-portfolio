@@ -25,7 +25,7 @@ const SkillCategory = ({ title, items, color, isOpen, onToggle, row, isRowHovere
         <div className="skill-tags">
           {items.map((skill, index) => (
             <span key={index} className="skill-tag" style={{ borderColor: color }}>
-              # {skill}
+              {skill}
             </span>
           ))}
         </div>

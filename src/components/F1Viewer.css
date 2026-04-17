@@ -26,14 +26,14 @@
 
 .f1-nav .logo-ls {
   color: #FFA500;
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 1.2rem;
   font-weight: bold;
 }
 
 .f1-nav .logo-portfolio {
   color: #fff;
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 1.2rem;
 }
 
@@ -46,7 +46,7 @@
   background: none;
   border: none;
   color: #b0b0b0;
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 1rem;
   cursor: pointer;
   padding: 0.5rem;
@@ -69,31 +69,33 @@
 
 .f1-title {
   font-size: 3rem;
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   color: #fff;
   margin-bottom: 0.5rem;
 }
 
-.f1-title .section-symbol {
+.section-symbol {
   color: #FFA500;
 }
 
 .f1-subtitle {
   color: #b0b0b0;
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 1.1rem;
 }
 
 .f1-tagline {
   color: #FFA500;
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 1rem;
   margin-top: 1rem;
 }
 
 .f1-interactive {
   color: #00d9ff;
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.9rem;
   margin-top: 0.5rem;
   opacity: 0.8;
@@ -124,7 +126,7 @@
 
 .camera-options-label {
   color: #FFA500;
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.9rem;
   cursor: pointer;
   padding: 0.5rem 1rem;
@@ -150,7 +152,7 @@
   border: 1px solid #444;
   color: #b0b0b0;
   padding: 0.5rem 1rem;
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.85rem;
   cursor: pointer;
   border-radius: 4px;
@@ -244,7 +246,7 @@
 
 .commentary-text {
   color: #fff;
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.9rem;
   margin: 0;
   line-height: 1.4;
@@ -278,7 +280,7 @@
 
 .loader-text {
   color: #FFA500;
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 1.2rem;
   margin-bottom: 1rem;
 }
@@ -315,7 +317,7 @@
   border: 1px solid #222;
   color: #00d9ff;
   padding: 1rem 1.5rem;
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 1rem;
   cursor: pointer;
   border-radius: 12px;
@@ -340,7 +342,7 @@
 
 .sound-warning {
   color: #666;
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
 }
 
@@ -354,7 +356,7 @@
 
 .control-title {
   color: #00d9ff;
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 1rem;
   margin: 0;
   font-weight: 400;
@@ -409,7 +411,7 @@
   border: 1px solid #333;
   color: #b0b0b0;
   padding: 0.75rem 1.5rem;
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 1rem;
   cursor: pointer;
   border-radius: 8px;
@@ -437,7 +439,7 @@
 
 .instructions-list li {
   color: #b0b0b0;
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.9rem;
   padding: 0.5rem 0;
   border-bottom: 1px solid #222;
@@ -468,7 +470,7 @@
 
 .f1-footer .model-credit a {
   color: #888;
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.8rem;
   text-decoration: none;
   transition: color 0.3s ease;
@@ -480,7 +482,7 @@
 
 .f1-footer p {
   color: #666;
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.9rem;
 }
 

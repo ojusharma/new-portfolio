@@ -35,9 +35,12 @@ const ExperienceItem = ({ experience, activeView, onToggle }) => {
     <div className="experience-item">
       <div className="experience-header">
         <div className="experience-info">
-          <h3 className="experience-role">
-            {experience.role} <span className="experience-company"><span className="company-dash">— </span>{experience.company}</span>
-          </h3>
+          <div className="experience-title-block">
+            <h3 className="experience-company-name">{experience.company}</h3>
+            <p className="experience-role-title">
+              <span className="role-prefix">›</span> {experience.role}
+            </p>
+          </div>
           <p className="experience-description">{experience.description}</p>
           
           <div className="button-group">
