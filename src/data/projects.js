@@ -2,7 +2,7 @@ export const projects = [
   {
     id: 0,
     title: "Fora - UBC Task Board",
-    description: "UBC-exclusive task marketplace with ML-powered recommendations, and campus rewards system for students, faculty, and staff",
+    description: "UBC-exclusive task marketplace with ML-powered recommendations, and campus rewards system.",
     tags: ["Next.js", "FastAPI", "TypeScript", "Python", "Supabase", "ML"],
     liveUrl: "https://fora-lime.vercel.app/",
     detailsUrl: "https://github.com/ojusharma/fora"
@@ -10,7 +10,7 @@ export const projects = [
   {
     id: 1,
     title: "Zip2Job - Digital Work Artifact Mining System",
-    description: "Privacy-first desktop application that analyzes local code repositories to automatically generate professional portfolio content and resume bullet points",
+    description: "Application that analyzes local code repositories to automatically generate professional portfolio and resumes.",
     tags: ["Python", "AI/LLM", "SQLAlchemy", "GitPython"],
     liveUrl: "https://github.com/COSC-499-W2025/capstone-project-team-5",
     detailsUrl: "https://github.com/COSC-499-W2025/capstone-project-team-5"

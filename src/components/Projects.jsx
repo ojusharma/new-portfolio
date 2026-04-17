@@ -22,7 +22,7 @@ const ProjectCard = ({ project }) => {
         <div className="project-tags">
           {project.tags.map((tag, index) => (
             <span key={index} className="project-tag">
-              # {tag}
+              {tag}
             </span>
           ))}
         </div>
