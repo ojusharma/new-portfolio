@@ -378,7 +378,7 @@
 
 @media (max-width: 768px) {
   .experience-section {
-    padding: 2.5rem 1rem;
+    padding: 2.5rem 1.25rem;
   }
 
   .section-title {
@@ -448,7 +448,7 @@
 
 @media (max-width: 480px) {
   .experience-section {
-    padding: 2rem 0.75rem;
+    padding: 2rem 1rem;
   }
 
   .section-title {

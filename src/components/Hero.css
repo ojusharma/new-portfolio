@@ -163,7 +163,7 @@
 
 @media (max-width: 400px) {
   .hero {
-    padding: 4rem 0.75rem 0.75rem;
+    padding: 4rem 1rem 0.75rem;
   }
 
   .hero-name {
@@ -222,4 +222,10 @@
 @keyframes pulse-glow {
   0%, 100% { box-shadow: 0 0 10px rgba(255, 165, 0, 0.3); }
   50% { box-shadow: 0 0 25px rgba(255, 165, 0, 0.7); }
+}
+
+@media (max-width: 768px) {
+  .f1-box {
+    display: none;
+  }
 }
