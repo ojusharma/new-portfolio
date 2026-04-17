@@ -48,14 +48,14 @@ const ExperienceItem = ({ experience, activeView, onToggle }) => {
               className={`details-toggle ${activeView === 'details' ? 'active' : ''}`}
               onClick={() => handleToggle('details')}
             >
-              {activeView === 'details' ? '$ exit' : '$ cat details.txt'}
+              {activeView === 'details' ? '$ exit' : '$ details'}
             </button>
             
             <button 
               className={`details-toggle ${activeView === 'techstack' ? 'active' : ''}`}
               onClick={() => handleToggle('techstack')}
             >
-              {activeView === 'techstack' ? '$ exit' : '$ cat tech-stack.txt'}
+              {activeView === 'techstack' ? '$ exit' : '$ tech-stack'}
             </button>
           </div>
 
