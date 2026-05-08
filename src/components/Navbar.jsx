@@ -84,7 +84,7 @@ const Navbar = () => {
           onClick={handleLogoClick}
         >
           <span className="logo-ls">$</span>
-          <span className="logo-portfolio">ls portfolio</span>
+          <span className="logo-portfolio">ojus</span>
         </button>
 
         <button 
