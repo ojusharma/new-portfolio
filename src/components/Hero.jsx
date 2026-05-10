@@ -1,12 +1,25 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { personalInfo } from '../data/personal';
+import FadeIn from './animations/FadeIn';
 import './Hero.css';
+
+const useHasScrolled = () => {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const handler = () => { if (window.scrollY > 50) setScrolled(true); };
+    window.addEventListener('scroll', handler, { passive: true });
+    return () => window.removeEventListener('scroll', handler);
+  }, []);
+  return scrolled;
+};
 
 const TEXT_SEQUENCE = ['ojus', 'ojusharma', 'ojuuuuus', 'mo salah is goat', 'Ojus Sharma'];
 
 const Hero = () => {
   const navigate = useNavigate();
+  const hasScrolled = useHasScrolled();
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
@@ -87,36 +100,51 @@ const Hero = () => {
             <span className="typewriter-cursor">|</span>
           </h1>
           
-          <div className="hero-details">
-            <p className="hero-title">{personalInfo.title}</p>
-            <p className="hero-university">{personalInfo.university}</p>
-            <p className="hero-graduation">{personalInfo.graduation}</p>
+          <FadeIn delay={0.3} direction="up">
+            <div className="hero-details">
+              <p className="hero-title">{personalInfo.title}</p>
+              <p className="hero-university">{personalInfo.university}</p>
+              <p className="hero-graduation">{personalInfo.graduation}</p>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.5} direction="up">
+            <p className="hero-tagline">{personalInfo.tagline}</p>
+          </FadeIn>
+
+          <FadeIn delay={0.65} direction="up">
+            <p className="hero-location">{personalInfo.location}</p>
+          </FadeIn>
+        </div>
+
+        <FadeIn delay={0.15} direction="left">
+          <div className="hero-image">
+            <img
+              src={profileImage}
+              alt={displayText || personalInfo.name}
+              onError={(e) => {
+                e.target.src = 'https://via.placeholder.com/300x300/1a1a1a/FFA500?text=Add+Your+Photo';
+              }}
+            />
           </div>
-
-          <p className="hero-tagline">{personalInfo.tagline}</p>
-
-          <p className="hero-location">{personalInfo.location}</p>
-        </div>
-
-        <div className="hero-image">
-          <img 
-            src={profileImage} 
-            alt={displayText || personalInfo.name}
-            onError={(e) => {
-              e.target.src = 'https://via.placeholder.com/300x300/1a1a1a/FFA500?text=Add+Your+Photo';
-            }}
-          />
-        </div>
+        </FadeIn>
       </div>
 
       {showF1Box && (
-        <div
+        <motion.div
           className="f1-box"
           onClick={handleBoxClick}
+          initial={{ opacity: 0, scale: 0.8, y: 10 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.4, ease: [0.21, 0.47, 0.32, 0.98] }}
         >
           /f1
-        </div>
+        </motion.div>
       )}
+
+      <div className={`scroll-hint ${hasScrolled ? 'scroll-hint--hidden' : ''}`} aria-hidden="true">
+        ▼
+      </div>
     </section>
   );
 };

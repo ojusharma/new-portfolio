@@ -1,5 +1,8 @@
 import React from 'react';
 import { projects } from '../data/projects';
+import { StaggerGrid, StaggerItem } from './animations/StaggerGrid';
+import TiltCard from './animations/TiltCard';
+import FadeIn from './animations/FadeIn';
 import './Projects.css';
 
 const ProjectCard = ({ project }) => {
@@ -47,15 +50,21 @@ const ProjectCard = ({ project }) => {
 const Projects = () => {
   return (
     <section id="projects" className="projects-section">
-      <h2 className="section-title">
-        <span className="section-symbol">/</span>projects
-      </h2>
+      <FadeIn direction="left">
+        <h2 className="section-title">
+          <span className="section-symbol">/</span>projects
+        </h2>
+      </FadeIn>
 
-      <div className="projects-grid">
+      <StaggerGrid className="projects-grid">
         {projects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+          <StaggerItem key={project.id}>
+            <TiltCard style={{ height: '100%' }}>
+              <ProjectCard project={project} />
+            </TiltCard>
+          </StaggerItem>
         ))}
-      </div>
+      </StaggerGrid>
     </section>
   );
 };

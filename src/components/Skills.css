@@ -238,7 +238,8 @@
   }
 
   .skill-category-header {
-    padding: 0.75rem 1rem;
+    padding: 1rem 1.25rem;
+    min-height: 52px;
   }
 
   .skill-category-title {

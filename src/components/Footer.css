@@ -31,3 +31,38 @@
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.9rem;
 }
+
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 2rem 1.25rem 2.5rem;
+    padding-bottom: max(2.5rem, calc(1.5rem + env(safe-area-inset-bottom)));
+  }
+
+  .site-footer .f1-easter-egg {
+    width: 100%;
+    max-width: 280px;
+    min-height: 44px;
+    font-size: 0.8rem;
+    justify-content: center;
+  }
+
+  .site-footer p {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-footer {
+    padding: 1.5rem 1rem 2rem;
+    padding-bottom: max(2rem, calc(1.25rem + env(safe-area-inset-bottom)));
+  }
+
+  .site-footer .f1-easter-egg {
+    max-width: 100%;
+    font-size: 0.75rem;
+  }
+
+  .site-footer p {
+    font-size: 0.75rem;
+  }
+}

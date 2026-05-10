@@ -93,6 +93,7 @@
 @media (max-width: 968px) {
   .hero {
     padding: 4rem 1.5rem 1rem;
+    position: relative;
   }
 
   .hero-content {
@@ -124,13 +125,43 @@
   }
 }
 
+/* Scroll hint — mobile only, fades out after user scrolls */
+.scroll-hint {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .scroll-hint {
+    display: block;
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #666;
+    font-size: 1rem;
+    animation: scrollBounce 1.6s ease-in-out infinite;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+
+  .scroll-hint--hidden {
+    opacity: 0;
+  }
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.5; }
+  50% { transform: translateX(-50%) translateY(6px); opacity: 1; }
+}
+
 @media (max-width: 640px) {
   .hero {
     padding: 4rem 1rem 1rem;
+    position: relative;
   }
 
   .hero-name {
-    font-size: 1.75rem;
+    font-size: 2rem;
     letter-spacing: 0.02em;
     margin-bottom: 1.5rem;
   }
@@ -164,10 +195,11 @@
 @media (max-width: 400px) {
   .hero {
     padding: 4rem 1rem 0.75rem;
+    position: relative;
   }
 
   .hero-name {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
   }
 
   .hero-details,

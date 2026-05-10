@@ -29,7 +29,7 @@
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid #1c1c1c;
   border-radius: 8px;
-  padding: 2rem;
+  overflow: hidden;
   transition: all 0.3s ease;
 }
 
@@ -37,6 +37,459 @@
   background: rgba(255, 255, 255, 0.05);
   border-color: #2a2a2a;
   transform: translateY(-2px);
+}
+
+.experience-item--left {
+  margin-right: 10%;
+}
+
+.experience-item--right {
+  margin-left: 10%;
+}
+
+.experience-content {
+  padding: 2rem;
+}
+
+/* Boeing plane strip */
+.boeing-card-wrapper {
+  position: relative;
+}
+
+.boeing-card-wrapper.experience-item--left { margin-right: 10%; }
+.boeing-card-wrapper.experience-item--right { margin-left: 10%; }
+.boeing-card-wrapper .experience-item { margin: 0; }
+
+.boeing-plane-strip {
+  position: absolute;
+  left: calc(100% + 20px);
+  top: 0;
+  width: 62px;
+  height: 100%;
+  min-height: 120px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #0f0d0a 0%, #0a0a0a 40%, #080808 100%);
+  border: 1px solid rgba(255, 165, 0, 0.08);
+  box-shadow: 0 0 10px rgba(255, 120, 0, 0.03), inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.plane-grid-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255, 165, 0, 0.06);
+}
+
+.boeing-plane-svg {
+  position: absolute;
+  left: 50%;
+  width: 48px;
+  height: 48px;
+  transform: translateX(-50%);
+  animation: planeRise 5s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px rgba(0, 217, 255, 0.55));
+}
+
+@keyframes planeRise {
+  0%   { bottom: -15%; opacity: 0; rotate: -4deg; }
+  8%   { opacity: 1; }
+  40%  { rotate: 3deg; }
+  65%  { rotate: -3deg; }
+  92%  { opacity: 1; }
+  100% { bottom: 108%; opacity: 0; rotate: 2deg; }
+}
+
+.plane-contrail-dot {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255, 200, 100, 0.65);
+  animation: contrailFade 5s ease-in-out infinite;
+}
+
+@keyframes contrailFade {
+  0%, 18%  { opacity: 0; }
+  32%      { opacity: 0.55; }
+  60%      { opacity: 0.3; }
+  84%, 100% { opacity: 0; }
+}
+
+.boeing-card-wrapper:hover .boeing-plane-svg {
+  filter: drop-shadow(0 0 10px rgba(0, 217, 255, 0.9));
+}
+
+@media (max-width: 968px) {
+  .boeing-plane-strip { display: none; }
+  .boeing-card-wrapper.experience-item--left,
+  .boeing-card-wrapper.experience-item--right { margin: 0; }
+}
+
+/* UBC neural strip */
+.ubc-card-wrapper {
+  position: relative;
+}
+
+.ubc-card-wrapper.experience-item--left { margin-right: 10%; }
+.ubc-card-wrapper.experience-item--right { margin-left: 10%; }
+.ubc-card-wrapper .experience-item { margin: 0; }
+
+.ubc-neural-strip {
+  position: absolute;
+  right: calc(100% + 20px);
+  top: 0;
+  width: 62px;
+  height: 100%;
+  min-height: 120px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #0f0d0a 0%, #0a0a0a 40%, #080808 100%);
+  border: 1px solid rgba(255, 165, 0, 0.08);
+  box-shadow: 0 0 10px rgba(255, 120, 0, 0.03), inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.neural-grid-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255, 165, 0, 0.06);
+}
+
+.neural-svg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 48px;
+  height: 72px;
+  transform: translate(-50%, -50%);
+  overflow: visible;
+}
+
+@keyframes nodeActivate {
+  0%, 100% {
+    fill: rgba(255, 255, 255, 0.2);
+    filter: none;
+  }
+  50% {
+    fill: #00d9ff;
+    filter: drop-shadow(0 0 5px rgba(0, 217, 255, 0.8));
+  }
+}
+
+@keyframes nodeActivateOutput {
+  0%, 100% {
+    fill: rgba(255, 255, 255, 0.2);
+    filter: none;
+  }
+  50% {
+    fill: #FFA500;
+    filter: drop-shadow(0 0 6px rgba(255, 165, 0, 0.9));
+  }
+}
+
+@keyframes edgeSweep {
+  0%, 100% { stroke-dashoffset: 40; stroke: rgba(0, 217, 255, 0.12); }
+  50%       { stroke-dashoffset: 0;  stroke: rgba(0, 217, 255, 0.75); }
+}
+
+.neural-node--input {
+  animation: nodeActivate 4s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.neural-node--hidden-a {
+  animation: nodeActivate 4s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+
+.neural-node--hidden-b {
+  animation: nodeActivate 4s ease-in-out infinite;
+  animation-delay: 0.75s;
+}
+
+.neural-node--output {
+  animation: nodeActivateOutput 4s ease-in-out infinite;
+  animation-delay: 1.4s;
+}
+
+.neural-edge--input-a {
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation: edgeSweep 4s ease-in-out infinite;
+  animation-delay: 0.25s;
+}
+
+.neural-edge--input-b {
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation: edgeSweep 4s ease-in-out infinite;
+  animation-delay: 0.35s;
+}
+
+.neural-edge--hidden-a-out {
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation: edgeSweep 4s ease-in-out infinite;
+  animation-delay: 0.9s;
+}
+
+.neural-edge--hidden-b-out {
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation: edgeSweep 4s ease-in-out infinite;
+  animation-delay: 1.05s;
+}
+
+.ubc-card-wrapper:hover .neural-node--input,
+.ubc-card-wrapper:hover .neural-node--hidden-a,
+.ubc-card-wrapper:hover .neural-node--hidden-b {
+  filter: drop-shadow(0 0 8px rgba(0, 217, 255, 0.6));
+}
+
+.ubc-card-wrapper:hover .neural-node--output {
+  filter: drop-shadow(0 0 9px rgba(255, 165, 0, 0.7));
+}
+
+@media (max-width: 968px) {
+  .ubc-neural-strip { display: none; }
+  .ubc-card-wrapper.experience-item--left,
+  .ubc-card-wrapper.experience-item--right { margin: 0; }
+}
+
+/* TUM shared grid line */
+.tum-grid-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255, 165, 0, 0.06);
+}
+
+/* TUM Gears strip */
+.tum-gears-card-wrapper {
+  position: relative;
+}
+
+.tum-gears-card-wrapper.experience-item--left { margin-right: 10%; }
+.tum-gears-card-wrapper.experience-item--right { margin-left: 10%; }
+.tum-gears-card-wrapper .experience-item { margin: 0; }
+
+.tum-gears-strip {
+  position: absolute;
+  left: calc(100% + 20px);
+  top: 0;
+  width: 62px;
+  height: 100%;
+  min-height: 120px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #0f0d0a 0%, #0a0a0a 40%, #080808 100%);
+  border: 1px solid rgba(255, 165, 0, 0.08);
+  box-shadow: 0 0 10px rgba(255, 120, 0, 0.03), inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.tum-gears-svg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 54px;
+  height: 82px;
+  transform: translate(-50%, -50%);
+  overflow: visible;
+}
+
+.gear--large {
+  animation: gearCW 8s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.gear--small {
+  animation: gearCCW 6s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.gear--micro {
+  animation: gearCW 4.5s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes gearCW {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes gearCCW {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+
+.tum-gears-card-wrapper:hover .gear--large,
+.tum-gears-card-wrapper:hover .gear--small,
+.tum-gears-card-wrapper:hover .gear--micro {
+  filter: drop-shadow(0 0 4px rgba(0, 217, 255, 0.6));
+}
+
+@media (max-width: 968px) {
+  .tum-gears-strip { display: none; }
+  .tum-gears-card-wrapper.experience-item--left,
+  .tum-gears-card-wrapper.experience-item--right { margin: 0; }
+}
+
+/* TUM Server strip */
+.tum-server-card-wrapper {
+  position: relative;
+}
+
+.tum-server-card-wrapper.experience-item--left { margin-right: 10%; }
+.tum-server-card-wrapper.experience-item--right { margin-left: 10%; }
+.tum-server-card-wrapper .experience-item { margin: 0; }
+
+.tum-server-strip {
+  position: absolute;
+  right: calc(100% + 20px);
+  top: 0;
+  width: 62px;
+  height: 100%;
+  min-height: 120px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #0f0d0a 0%, #0a0a0a 40%, #080808 100%);
+  border: 1px solid rgba(255, 165, 0, 0.08);
+  box-shadow: 0 0 10px rgba(255, 120, 0, 0.03), inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.tum-server-svg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 54px;
+  height: 82px;
+  transform: translate(-50%, -50%);
+  overflow: visible;
+}
+
+.server-led {
+  fill: rgba(0, 200, 100, 0.25);
+}
+
+.server-led--0 { animation: ledBlink 2.1s ease-in-out infinite 0s; }
+.server-led--1 { animation: ledBlink 2.1s ease-in-out infinite 0.5s; }
+.server-led--2 { animation: ledBlink 1.8s ease-in-out infinite 0.8s; }
+.server-led--3 { animation: ledBlink 3.0s ease-in-out infinite 0.3s; }
+.server-led--4 { animation: ledBlink 2.6s ease-in-out infinite 1.2s; }
+.server-led--5 { animation: ledBlink 1.5s ease-in-out infinite 0.9s; }
+
+@keyframes ledBlink {
+  0%, 100% { fill: rgba(0, 200, 100, 0.2); filter: none; }
+  40%, 60%  { fill: rgba(0, 255, 120, 0.9); filter: drop-shadow(0 0 3px rgba(0, 255, 100, 0.75)); }
+}
+
+.server-cable {
+  animation: cableFlow 3s linear infinite;
+}
+
+@keyframes cableFlow {
+  from { stroke-dashoffset: 0; }
+  to   { stroke-dashoffset: -28; }
+}
+
+.tum-server-card-wrapper:hover .server-led {
+  animation-duration: 0.7s;
+}
+
+@media (max-width: 968px) {
+  .tum-server-strip { display: none; }
+  .tum-server-card-wrapper.experience-item--left,
+  .tum-server-card-wrapper.experience-item--right { margin: 0; }
+}
+
+/* UBC Chart strip (id:5) */
+.ubc-chart-card-wrapper {
+  position: relative;
+}
+
+.ubc-chart-card-wrapper.experience-item--left { margin-right: 10%; }
+.ubc-chart-card-wrapper.experience-item--right { margin-left: 10%; }
+.ubc-chart-card-wrapper .experience-item { margin: 0; }
+
+.ubc-chart-strip {
+  position: absolute;
+  left: calc(100% + 20px);
+  top: 0;
+  width: 62px;
+  height: 100%;
+  min-height: 120px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #0f0d0a 0%, #0a0a0a 40%, #080808 100%);
+  border: 1px solid rgba(255, 165, 0, 0.08);
+  box-shadow: 0 0 10px rgba(255, 120, 0, 0.03), inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.chart-grid-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255, 165, 0, 0.06);
+}
+
+.ubc-chart-svg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 54px;
+  height: 82px;
+  transform: translate(-50%, -50%);
+  overflow: visible;
+}
+
+.chart-bar {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  transform: scaleY(0);
+  animation: barGrow 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes barGrow {
+  from { transform: scaleY(0); }
+  to   { transform: scaleY(1); }
+}
+
+.chart-dot {
+  opacity: 0;
+  animation: dotAppear 0.3s ease forwards;
+}
+
+@keyframes dotAppear {
+  from { opacity: 0; transform: scale(0); transform-box: fill-box; transform-origin: center; }
+  to   { opacity: 1; transform: scale(1); transform-box: fill-box; transform-origin: center; }
+}
+
+.chart-line {
+  animation: lineDrawIn 0.8s ease 0.6s forwards;
+}
+
+@keyframes lineDrawIn {
+  to { stroke-dashoffset: 0; }
+}
+
+.ubc-chart-card-wrapper:hover .ubc-chart-svg {
+  filter: drop-shadow(0 0 6px rgba(0, 217, 255, 0.45));
+}
+
+@media (max-width: 968px) {
+  .ubc-chart-strip { display: none; }
+  .ubc-chart-card-wrapper.experience-item--left,
+  .ubc-chart-card-wrapper.experience-item--right { margin: 0; }
 }
 
 .experience-header {
@@ -171,6 +624,8 @@
   animation: terminalSlideDown 0.4s ease;
   max-height: 500px;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
   width: 100%;
 }
 
@@ -367,7 +822,7 @@
     margin-bottom: 3rem;
   }
 
-  .experience-item {
+  .experience-content {
     padding: 1.5rem;
   }
 
@@ -377,6 +832,12 @@
 }
 
 @media (max-width: 768px) {
+  .experience-item--left,
+  .experience-item--right {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
   .experience-section {
     padding: 2.5rem 1.25rem;
   }
@@ -386,7 +847,7 @@
     margin-bottom: 2.5rem;
   }
 
-  .experience-item {
+  .experience-content {
     padding: 1.25rem;
   }
 
@@ -456,9 +917,8 @@
     margin-bottom: 2rem;
   }
 
-  .experience-item {
+  .experience-content {
     padding: 1rem;
-    border-radius: 6px;
   }
 
   .experience-period {

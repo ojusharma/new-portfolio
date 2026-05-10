@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import MagneticButton from './animations/MagneticButton';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -78,8 +79,15 @@ const Navbar = () => {
 
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+      {isMobileMenuOpen && (
+        <div
+          className="mobile-menu-overlay"
+          onClick={() => setIsMobileMenuOpen(false)}
+          aria-hidden="true"
+        />
+      )}
       <div className="navbar-content">
-        <button 
+        <button
           className="nav-logo"
           onClick={handleLogoClick}
         >
@@ -87,7 +95,7 @@ const Navbar = () => {
           <span className="logo-portfolio">ojus</span>
         </button>
 
-        <button 
+        <button
           className={`hamburger ${isMobileMenuOpen ? 'open' : ''}`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
@@ -99,13 +107,14 @@ const Navbar = () => {
 
         <div className={`nav-links ${isMobileMenuOpen ? 'open' : ''}`}>
           {navItems.map((item) => (
-            <button
-              key={item.id}
-              className={`nav-link ${activeSection === item.id ? 'active' : ''} ${item.isF1 ? 'f1-link' : ''}`}
-              onClick={() => item.isF1 ? handleF1Click() : scrollToSection(item.id)}
-            >
-              {item.label}
-            </button>
+            <MagneticButton key={item.id} strength={0.2}>
+              <button
+                className={`nav-link ${activeSection === item.id ? 'active' : ''} ${item.isF1 ? 'f1-link' : ''}`}
+                onClick={() => item.isF1 ? handleF1Click() : scrollToSection(item.id)}
+              >
+                {item.label}
+              </button>
+            </MagneticButton>
           ))}
         </div>
       </div>

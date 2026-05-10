@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { skills } from '../data/skills';
+import FadeIn from './animations/FadeIn';
 import './Skills.css';
 
 const SkillCategory = ({ title, items, color, isOpen, onToggle, row, isRowHovered, onRowHover }) => {
@@ -93,34 +94,37 @@ const Skills = () => {
 
   return (
     <section id="skills" className="skills-section">
-      <h2 className="section-title">
-        <span className="section-symbol">/</span>skills
-      </h2>
+      <FadeIn direction="left">
+        <h2 className="section-title">
+          <span className="section-symbol">/</span>skills
+        </h2>
+      </FadeIn>
 
       <div className="skills-rows">
         {rows.map((rowCategories, rowIndex) => (
-          <div 
-            key={rowIndex} 
-            className={`skill-row ${hoveredRow === rowIndex + 1 ? 'row-active' : ''}`}
-          >
-            {rowCategories.map((category, catIndex) => (
-              <React.Fragment key={category.key}>
-                <SkillCategory
-                  title={category.title}
-                  items={category.items}
-                  color={category.color}
-                  isOpen={openCategories[category.key]}
-                  onToggle={() => handleToggle(category.key)}
-                  row={category.row}
-                  isRowHovered={hoveredRow === category.row}
-                  onRowHover={setHoveredRow}
-                />
-                {catIndex < rowCategories.length - 1 && (
-                  <div className="row-connector" style={{ '--row-color': category.color }} />
-                )}
-              </React.Fragment>
-            ))}
-          </div>
+          <FadeIn key={rowIndex} delay={rowIndex * 0.12} direction="up">
+            <div
+              className={`skill-row ${hoveredRow === rowIndex + 1 ? 'row-active' : ''}`}
+            >
+              {rowCategories.map((category, catIndex) => (
+                <React.Fragment key={category.key}>
+                  <SkillCategory
+                    title={category.title}
+                    items={category.items}
+                    color={category.color}
+                    isOpen={openCategories[category.key]}
+                    onToggle={() => handleToggle(category.key)}
+                    row={category.row}
+                    isRowHovered={hoveredRow === category.row}
+                    onRowHover={setHoveredRow}
+                  />
+                  {catIndex < rowCategories.length - 1 && (
+                    <div className="row-connector" style={{ '--row-color': category.color }} />
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
+          </FadeIn>
         ))}
       </div>
     </section>

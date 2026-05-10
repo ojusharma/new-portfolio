@@ -154,7 +154,7 @@
   .contact-links {
     flex-direction: column;
     width: 100%;
-    max-width: 320px;
+    max-width: min(360px, 100%);
     gap: 1rem;
     margin-top: 1.5rem;
   }
@@ -196,7 +196,7 @@
   }
 
   .contact-links {
-    max-width: 280px;
+    max-width: 100%;
     gap: 0.875rem;
   }
 

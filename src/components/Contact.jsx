@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { contactInfo } from '../data/contact';
+import { StaggerGrid, StaggerItem } from './animations/StaggerGrid';
+import MagneticButton from './animations/MagneticButton';
+import FadeIn from './animations/FadeIn';
 import './Contact.css';
 
 // SVG Icons
@@ -44,78 +47,98 @@ const Contact = () => {
 
   return (
     <section id="contact" className="contact-section">
-      <h2 className="section-title">
-        <span className="section-symbol">/</span>contact
-      </h2>
+      <FadeIn direction="left">
+        <h2 className="section-title">
+          <span className="section-symbol">/</span>contact
+        </h2>
+      </FadeIn>
 
       <div className="contact-content">
-        <div className="contact-text">
-          <p className="contact-description">
-            I'm always open to discussing new projects, creative ideas, or opportunities.
-            If you want to geek out about Formula 1, Liverpool FC or History, I'm more than happy to chat! 
-          </p>
-        </div>
+        <FadeIn delay={0.1} direction="up">
+          <div className="contact-text">
+            <p className="contact-description">
+              I'm always open to discussing new projects, creative ideas, or opportunities.
+              If you want to geek out about Formula 1, Liverpool FC or History, I'm more than happy to chat!
+            </p>
+          </div>
+        </FadeIn>
 
-        <div className="contact-links">
+        <StaggerGrid className="contact-links">
           {contactInfo.email && (
-            <a 
-              href={`mailto:${contactInfo.email}`}
-              className="contact-link"
-              onClick={handleEmailClick}
-              onMouseEnter={() => setIsHoveringEmail(true)}
-              onMouseLeave={() => setIsHoveringEmail(false)}
-            >
-              <span className="link-icon"><EmailIcon /></span>
-              <span className="link-text">
-                {copied ? 'Copied to clipboard!' : (isHoveringEmail ? contactInfo.email : 'Email')}
-              </span>
-            </a>
+            <StaggerItem>
+              <MagneticButton strength={0.25}>
+                <a
+                  href={`mailto:${contactInfo.email}`}
+                  className="contact-link"
+                  onClick={handleEmailClick}
+                  onMouseEnter={() => setIsHoveringEmail(true)}
+                  onMouseLeave={() => setIsHoveringEmail(false)}
+                >
+                  <span className="link-icon"><EmailIcon /></span>
+                  <span className="link-text">
+                    {copied ? 'Copied to clipboard!' : (isHoveringEmail ? contactInfo.email : 'Email')}
+                  </span>
+                </a>
+              </MagneticButton>
+            </StaggerItem>
           )}
 
           {contactInfo.github && (
-            <a 
-              href={contactInfo.github}
-              className="contact-link"
-              target="_blank"
-              rel="noopener noreferrer"
-              onMouseEnter={() => setIsHoveringGithub(true)}
-              onMouseLeave={() => setIsHoveringGithub(false)}
-            >
-              <span className="link-icon"><GitHubIcon /></span>
-              <span className="link-text">
-                {isHoveringGithub ? '@ojusharma' : 'GitHub'}
-              </span>
-            </a>
+            <StaggerItem>
+              <MagneticButton strength={0.25}>
+                <a
+                  href={contactInfo.github}
+                  className="contact-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onMouseEnter={() => setIsHoveringGithub(true)}
+                  onMouseLeave={() => setIsHoveringGithub(false)}
+                >
+                  <span className="link-icon"><GitHubIcon /></span>
+                  <span className="link-text">
+                    {isHoveringGithub ? '@ojusharma' : 'GitHub'}
+                  </span>
+                </a>
+              </MagneticButton>
+            </StaggerItem>
           )}
 
           {contactInfo.linkedin && (
-            <a 
-              href={contactInfo.linkedin}
-              className="contact-link"
-              target="_blank"
-              rel="noopener noreferrer"
-              onMouseEnter={() => setIsHoveringLinkedin(true)}
-              onMouseLeave={() => setIsHoveringLinkedin(false)}
-            >
-              <span className="link-icon"><LinkedInIcon /></span>
-              <span className="link-text">
-                {isHoveringLinkedin ? '/ojus-sharma' : 'LinkedIn'}
-              </span>
-            </a>
+            <StaggerItem>
+              <MagneticButton strength={0.25}>
+                <a
+                  href={contactInfo.linkedin}
+                  className="contact-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onMouseEnter={() => setIsHoveringLinkedin(true)}
+                  onMouseLeave={() => setIsHoveringLinkedin(false)}
+                >
+                  <span className="link-icon"><LinkedInIcon /></span>
+                  <span className="link-text">
+                    {isHoveringLinkedin ? '/ojus-sharma' : 'LinkedIn'}
+                  </span>
+                </a>
+              </MagneticButton>
+            </StaggerItem>
           )}
 
           {contactInfo.twitter && (
-            <a 
-              href={contactInfo.twitter}
-              className="contact-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span className="link-icon"><TwitterIcon /></span>
-              <span className="link-text">Twitter</span>
-            </a>
+            <StaggerItem>
+              <MagneticButton strength={0.25}>
+                <a
+                  href={contactInfo.twitter}
+                  className="contact-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="link-icon"><TwitterIcon /></span>
+                  <span className="link-text">Twitter</span>
+                </a>
+              </MagneticButton>
+            </StaggerItem>
           )}
-        </div>
+        </StaggerGrid>
       </div>
     </section>
   );
