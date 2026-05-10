@@ -22,9 +22,9 @@ export const experiences = [
   },
   {
     id: 2,
-    company: "University of British Columbia - Directed Studies",
-    role: "Software Developer, Kelowna",
-    period: "Sep 2025 - Present",
+    company: "University of British Columbia",
+    role: "Software Developer / Research Student",
+    period: "Sep 2025 - Apr 2026",
     description: "Designing an AI system that leverages Large Language Models (LLMs) to personalize computer science practice problems based on individual student profiles and preferences.",
     details: [
       "Designing an AI system that leverages Large Language Models (LLMs) to personalize computer science practice problems based on individual student profiles and preferences.",
