@@ -40,11 +40,11 @@
 }
 
 .experience-item--left {
-  margin-right: 10%;
+  margin-right: 9%;
 }
 
 .experience-item--right {
-  margin-left: 10%;
+  margin-left: 9%;
 }
 
 .experience-content {
@@ -56,8 +56,8 @@
   position: relative;
 }
 
-.boeing-card-wrapper.experience-item--left { margin-right: 10%; }
-.boeing-card-wrapper.experience-item--right { margin-left: 10%; }
+.boeing-card-wrapper.experience-item--left { margin-right: 9%; }
+.boeing-card-wrapper.experience-item--right { margin-left: 9%; }
 .boeing-card-wrapper .experience-item { margin: 0; }
 
 .boeing-plane-strip {
@@ -134,8 +134,8 @@
   position: relative;
 }
 
-.ubc-card-wrapper.experience-item--left { margin-right: 10%; }
-.ubc-card-wrapper.experience-item--right { margin-left: 10%; }
+.ubc-card-wrapper.experience-item--left { margin-right: 9%; }
+.ubc-card-wrapper.experience-item--right { margin-left: 9%; }
 .ubc-card-wrapper .experience-item { margin: 0; }
 
 .ubc-neural-strip {
@@ -275,8 +275,8 @@
   position: relative;
 }
 
-.tum-gears-card-wrapper.experience-item--left { margin-right: 10%; }
-.tum-gears-card-wrapper.experience-item--right { margin-left: 10%; }
+.tum-gears-card-wrapper.experience-item--left { margin-right: 9%; }
+.tum-gears-card-wrapper.experience-item--right { margin-left: 9%; }
 .tum-gears-card-wrapper .experience-item { margin: 0; }
 
 .tum-gears-strip {
@@ -348,8 +348,8 @@
   position: relative;
 }
 
-.tum-server-card-wrapper.experience-item--left { margin-right: 10%; }
-.tum-server-card-wrapper.experience-item--right { margin-left: 10%; }
+.tum-server-card-wrapper.experience-item--left { margin-right: 9%; }
+.tum-server-card-wrapper.experience-item--right { margin-left: 9%; }
 .tum-server-card-wrapper .experience-item { margin: 0; }
 
 .tum-server-strip {
@@ -416,8 +416,8 @@
   position: relative;
 }
 
-.ubc-chart-card-wrapper.experience-item--left { margin-right: 10%; }
-.ubc-chart-card-wrapper.experience-item--right { margin-left: 10%; }
+.ubc-chart-card-wrapper.experience-item--left { margin-right: 9%; }
+.ubc-chart-card-wrapper.experience-item--right { margin-left: 9%; }
 .ubc-chart-card-wrapper .experience-item { margin: 0; }
 
 .ubc-chart-strip {
