@@ -52,6 +52,12 @@ code {
   color: #fff;
 }
 
+/* Hide default cursor only when custom cursor is confirmed active */
+html.custom-cursor-active *,
+html.custom-cursor-active *:hover {
+  cursor: none !important;
+}
+
 /* Smooth transitions */
 button, a {
   transition: all 0.3s ease;
@@ -68,6 +74,8 @@ a:focus-visible {
 @media (max-width: 768px) {
   body {
     font-size: 16px; /* Prevent iOS zoom on input focus */
+    overscroll-behavior-y: none; /* Prevent rubber-band blank areas */
+    padding-bottom: env(safe-area-inset-bottom);
   }
 
   /* Improve tap targets */
@@ -78,5 +86,10 @@ a:focus-visible {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+  }
+
+  /* Thinner scrollbar on mobile — doesn't eat content width */
+  ::-webkit-scrollbar {
+    width: 4px;
   }
 }
