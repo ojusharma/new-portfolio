@@ -271,9 +271,24 @@ const UBCChart = () => {
   );
 };
 
+const smoothScrollTo = (targetY, duration, onDone) => {
+  const startY = window.scrollY;
+  const distance = targetY - startY;
+  const startTime = performance.now();
+  const easeInOutCubic = (t) => t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2;
+  const step = (now) => {
+    const progress = Math.min((now - startTime) / duration, 1);
+    window.scrollTo(0, startY + distance * easeInOutCubic(progress));
+    if (progress < 1) requestAnimationFrame(step);
+    else if (onDone) onDone();
+  };
+  requestAnimationFrame(step);
+};
+
 const ExperienceItem = ({ experience, index, activeView, onToggle }) => {
   const [displayedLines, setDisplayedLines] = useState([]);
   const [currentLine, setCurrentLine] = useState(0);
+  const cardRef = useRef(null);
 
   useEffect(() => {
     if (!activeView) {
@@ -295,9 +310,26 @@ const ExperienceItem = ({ experience, index, activeView, onToggle }) => {
   }, [activeView, currentLine, experience.details, experience.techStack]);
 
   const handleToggle = (view) => {
-    onToggle(experience.id, view);
+    const isClosing = activeView === view;
+    const isSameCard = activeView !== null && !isClosing;
+
     setDisplayedLines([]);
     setCurrentLine(0);
+
+    if (isClosing || isSameCard) {
+      onToggle(experience.id, view);
+      return;
+    }
+
+    if (!cardRef.current) {
+      onToggle(experience.id, view);
+      return;
+    }
+
+    // Scroll to card first, then open terminal
+    const navbarHeight = document.querySelector('.navbar')?.offsetHeight ?? 70;
+    const targetY = cardRef.current.getBoundingClientRect().top + window.scrollY - navbarHeight - 16;
+    smoothScrollTo(targetY, 80, () => onToggle(experience.id, view));
   };
 
   const offsetClass = index % 2 === 0 ? 'experience-item--left' : 'experience-item--right';
@@ -389,7 +421,7 @@ const ExperienceItem = ({ experience, index, activeView, onToggle }) => {
 
   if (experience.company === 'Boeing') {
     return (
-      <div className={`boeing-card-wrapper ${offsetClass}`}>
+      <div ref={cardRef} className={`boeing-card-wrapper ${offsetClass}`}>
         <div className="experience-item">{cardContent}</div>
         <BoeingPlane />
       </div>
@@ -398,7 +430,7 @@ const ExperienceItem = ({ experience, index, activeView, onToggle }) => {
 
   if (experience.company === 'University of British Columbia' && experience.id === 2) {
     return (
-      <div className={`ubc-card-wrapper ${offsetClass}`}>
+      <div ref={cardRef} className={`ubc-card-wrapper ${offsetClass}`}>
         <UBCNeural />
         <div className="experience-item">{cardContent}</div>
       </div>
@@ -407,7 +439,7 @@ const ExperienceItem = ({ experience, index, activeView, onToggle }) => {
 
   if (experience.company === 'Technical University of Munich (TUM)' && experience.id === 3) {
     return (
-      <div className={`tum-gears-card-wrapper ${offsetClass}`}>
+      <div ref={cardRef} className={`tum-gears-card-wrapper ${offsetClass}`}>
         <div className="experience-item">{cardContent}</div>
         <TUMGears />
       </div>
@@ -416,7 +448,7 @@ const ExperienceItem = ({ experience, index, activeView, onToggle }) => {
 
   if (experience.company === 'Technical University of Munich (TUM)' && experience.id === 4) {
     return (
-      <div className={`tum-server-card-wrapper ${offsetClass}`}>
+      <div ref={cardRef} className={`tum-server-card-wrapper ${offsetClass}`}>
         <TUMServer />
         <div className="experience-item">{cardContent}</div>
       </div>
@@ -425,7 +457,7 @@ const ExperienceItem = ({ experience, index, activeView, onToggle }) => {
 
   if (experience.company === 'University of British Columbia' && experience.id === 5) {
     return (
-      <div className={`ubc-chart-card-wrapper ${offsetClass}`}>
+      <div ref={cardRef} className={`ubc-chart-card-wrapper ${offsetClass}`}>
         <div className="experience-item">{cardContent}</div>
         <UBCChart />
       </div>
@@ -433,7 +465,7 @@ const ExperienceItem = ({ experience, index, activeView, onToggle }) => {
   }
 
   return (
-    <div className={`experience-item ${offsetClass}`}>
+    <div ref={cardRef} className={`experience-item ${offsetClass}`}>
       {cardContent}
     </div>
   );
@@ -450,7 +482,7 @@ const Experience = () => {
         delete newState[expId];
         return newState;
       } else {
-        return { [expId]: view };
+        return { ...prev, [expId]: view };
       }
     });
   };
