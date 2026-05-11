@@ -10,7 +10,7 @@ const bgTransition = { duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] };
 
 const ProjectCard = ({ project }) => {
   const bgVariants = {
-    idle:    { opacity: 0, scale: 1.06 },
+    idle:    { opacity: 0.15, scale: 1.06 },
     hovered: { opacity: project.imageOpacity ?? 0.55, scale: 1 },
   };
 

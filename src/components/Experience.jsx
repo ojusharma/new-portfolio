@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useInView } from 'framer-motion';
+import React, { useState, useRef } from 'react';
+import { useInView, AnimatePresence } from 'framer-motion';
 import { experiences } from '../data/experience';
 import FadeIn from './animations/FadeIn';
+import ExperienceModal from './ExperienceModal';
 import './Experience.css';
 
 const gearPath = (cx, cy, innerR, outerR, teeth) => {
@@ -46,37 +47,10 @@ const UBCNeural = () => {
           viewBox="0 0 60 90"
           aria-hidden="true"
         >
-          {/* Edges — rendered before nodes so nodes appear on top */}
-          <line
-            className="neural-edge--input-a"
-            x1="30" y1="72" x2="18" y2="45"
-            stroke="rgba(0,217,255,0.12)"
-            strokeWidth="1.2"
-            strokeLinecap="round"
-          />
-          <line
-            className="neural-edge--input-b"
-            x1="30" y1="72" x2="42" y2="45"
-            stroke="rgba(0,217,255,0.12)"
-            strokeWidth="1.2"
-            strokeLinecap="round"
-          />
-          <line
-            className="neural-edge--hidden-a-out"
-            x1="18" y1="45" x2="30" y2="18"
-            stroke="rgba(0,217,255,0.12)"
-            strokeWidth="1.2"
-            strokeLinecap="round"
-          />
-          <line
-            className="neural-edge--hidden-b-out"
-            x1="42" y1="45" x2="30" y2="18"
-            stroke="rgba(0,217,255,0.12)"
-            strokeWidth="1.2"
-            strokeLinecap="round"
-          />
-
-          {/* Nodes */}
+          <line className="neural-edge--input-a"   x1="30" y1="72" x2="18" y2="45" stroke="rgba(0,217,255,0.12)" strokeWidth="1.2" strokeLinecap="round" />
+          <line className="neural-edge--input-b"   x1="30" y1="72" x2="42" y2="45" stroke="rgba(0,217,255,0.12)" strokeWidth="1.2" strokeLinecap="round" />
+          <line className="neural-edge--hidden-a-out" x1="18" y1="45" x2="30" y2="18" stroke="rgba(0,217,255,0.12)" strokeWidth="1.2" strokeLinecap="round" />
+          <line className="neural-edge--hidden-b-out" x1="42" y1="45" x2="30" y2="18" stroke="rgba(0,217,255,0.12)" strokeWidth="1.2" strokeLinecap="round" />
           <circle className="neural-node--input"    cx="30" cy="72" r="5" fill="rgba(255,255,255,0.2)" />
           <circle className="neural-node--hidden-a" cx="18" cy="45" r="5" fill="rgba(255,255,255,0.2)" />
           <circle className="neural-node--hidden-b" cx="42" cy="45" r="5" fill="rgba(255,255,255,0.2)" />
@@ -98,41 +72,24 @@ const BoeingPlane = () => {
       ))}
       {isInView && (
         <>
-          <svg
-            className="boeing-plane-svg"
-            viewBox="0 0 60 80"
-            aria-hidden="true"
-          >
-            {/* Fuselage */}
+          <svg className="boeing-plane-svg" viewBox="0 0 60 80" aria-hidden="true">
             <ellipse cx="30" cy="38" rx="4.5" ry="22" fill="rgba(255,255,255,0.92)" />
-            {/* Nose */}
             <path d="M25.5,17 Q30,8 34.5,17 Z" fill="rgba(255,255,255,0.92)" />
-            {/* Swept wings */}
             <path d="M27,36 L4,52 L6,56 L27,42 Z" fill="rgba(235,235,255,0.88)" />
             <path d="M33,36 L56,52 L54,56 L33,42 Z" fill="rgba(235,235,255,0.88)" />
-            {/* Winglets */}
             <path d="M4,52 L2,46 L6,56 Z" fill="rgba(200,220,255,0.7)" />
             <path d="M56,52 L58,46 L54,56 Z" fill="rgba(200,220,255,0.7)" />
-            {/* Engine pods */}
             <ellipse cx="11" cy="51" rx="4" ry="5.5" fill="rgba(180,190,210,0.82)" />
             <ellipse cx="49" cy="51" rx="4" ry="5.5" fill="rgba(180,190,210,0.82)" />
-            {/* Engine inlets */}
             <ellipse cx="11" cy="46" rx="3" ry="2" fill="rgba(60,80,120,0.8)" />
             <ellipse cx="49" cy="46" rx="3" ry="2" fill="rgba(60,80,120,0.8)" />
-            {/* Horizontal stabilizers */}
             <path d="M27,57 L17,64 L18,67 L28,61 Z" fill="rgba(220,220,240,0.85)" />
             <path d="M33,57 L43,64 L42,67 L32,61 Z" fill="rgba(220,220,240,0.85)" />
-            {/* Vertical stabilizer */}
             <path d="M28,55 L25,44 L35,44 L32,55 Z" fill="rgba(255,255,255,0.9)" />
-            {/* Window strip */}
             <rect x="27" y="20" width="6" height="10" rx="1.5" fill="rgba(0,200,255,0.35)" />
           </svg>
           {CONTRAIL_DOTS.map((dot, i) => (
-            <div
-              key={i}
-              className="plane-contrail-dot"
-              style={{ bottom: dot.bottom, animationDelay: dot.delay }}
-            />
+            <div key={i} className="plane-contrail-dot" style={{ bottom: dot.bottom, animationDelay: dot.delay }} />
           ))}
         </>
       )}
@@ -221,49 +178,24 @@ const UBCChart = () => {
       ))}
       {isInView && (
         <svg className="ubc-chart-svg" viewBox="0 0 60 90" aria-hidden="true">
-          {/* Axes */}
           <line x1="4" y1="78" x2="56" y2="78" stroke="rgba(0,217,255,0.25)" strokeWidth="0.8" />
           <line x1="4" y1="14" x2="4"  y2="78" stroke="rgba(0,217,255,0.12)" strokeWidth="0.5" />
-
-          {/* Bars */}
           {BAR_DATA.map((bar, i) => (
-            <rect
-              key={i}
-              x={bar.x}
-              y={78 - bar.h}
-              width="8"
-              height={bar.h}
-              rx="1.5"
-              fill="rgba(0,217,255,0.18)"
-              stroke="rgba(0,217,255,0.38)"
-              strokeWidth="0.5"
-              className="chart-bar"
-              style={{ animationDelay: bar.delay }}
+            <rect key={i} x={bar.x} y={78 - bar.h} width="8" height={bar.h} rx="1.5"
+              fill="rgba(0,217,255,0.18)" stroke="rgba(0,217,255,0.38)" strokeWidth="0.5"
+              className="chart-bar" style={{ animationDelay: bar.delay }}
             />
           ))}
-
-          {/* Top-of-bar dots */}
           {BAR_DATA.map((bar, i) => (
-            <circle
-              key={i}
-              cx={bar.x + 4}
-              cy={78 - bar.h}
-              r="2"
-              fill="rgba(0,217,255,0.75)"
-              className="chart-dot"
+            <circle key={i} cx={bar.x + 4} cy={78 - bar.h} r="2"
+              fill="rgba(0,217,255,0.75)" className="chart-dot"
               style={{ animationDelay: `${parseFloat(bar.delay) + 0.5}s` }}
             />
           ))}
-
-          {/* Trend line */}
           <polyline
             points={BAR_DATA.map(bar => `${bar.x + 4},${78 - bar.h}`).join(' ')}
-            fill="none"
-            stroke="rgba(0,217,255,0.22)"
-            strokeWidth="0.8"
-            strokeDasharray="100"
-            strokeDashoffset="100"
-            className="chart-line"
+            fill="none" stroke="rgba(0,217,255,0.22)" strokeWidth="0.8"
+            strokeDasharray="100" strokeDashoffset="100" className="chart-line"
           />
         </svg>
       )}
@@ -271,67 +203,7 @@ const UBCChart = () => {
   );
 };
 
-const smoothScrollTo = (targetY, duration, onDone) => {
-  const startY = window.scrollY;
-  const distance = targetY - startY;
-  const startTime = performance.now();
-  const easeInOutCubic = (t) => t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2;
-  const step = (now) => {
-    const progress = Math.min((now - startTime) / duration, 1);
-    window.scrollTo(0, startY + distance * easeInOutCubic(progress));
-    if (progress < 1) requestAnimationFrame(step);
-    else if (onDone) onDone();
-  };
-  requestAnimationFrame(step);
-};
-
-const ExperienceItem = ({ experience, index, activeView, onToggle }) => {
-  const [displayedLines, setDisplayedLines] = useState([]);
-  const [currentLine, setCurrentLine] = useState(0);
-  const cardRef = useRef(null);
-
-  useEffect(() => {
-    if (!activeView) {
-      setDisplayedLines([]);
-      setCurrentLine(0);
-      return;
-    }
-
-    const contentArray = activeView === 'details' ? experience.details : experience.techStack;
-
-    if (currentLine < contentArray.length) {
-      const timer = setTimeout(() => {
-        setDisplayedLines(prev => [...prev, contentArray[currentLine]]);
-        setCurrentLine(prev => prev + 1);
-      }, 150);
-
-      return () => clearTimeout(timer);
-    }
-  }, [activeView, currentLine, experience.details, experience.techStack]);
-
-  const handleToggle = (view) => {
-    const isClosing = activeView === view;
-    const isSameCard = activeView !== null && !isClosing;
-
-    setDisplayedLines([]);
-    setCurrentLine(0);
-
-    if (isClosing || isSameCard) {
-      onToggle(experience.id, view);
-      return;
-    }
-
-    if (!cardRef.current) {
-      onToggle(experience.id, view);
-      return;
-    }
-
-    // Scroll to card first, then open terminal
-    const navbarHeight = document.querySelector('.navbar')?.offsetHeight ?? 70;
-    const targetY = cardRef.current.getBoundingClientRect().top + window.scrollY - navbarHeight - 16;
-    smoothScrollTo(targetY, 80, () => onToggle(experience.id, view));
-  };
-
+const ExperienceItem = ({ experience, index, onOpenModal }) => {
   const offsetClass = index % 2 === 0 ? 'experience-item--left' : 'experience-item--right';
 
   const cardContent = (
@@ -345,84 +217,17 @@ const ExperienceItem = ({ experience, index, activeView, onToggle }) => {
             </p>
           </div>
           <p className="experience-description">{experience.description}</p>
-
-          <div className="button-group">
-            <button
-              className={`details-toggle ${activeView === 'details' ? 'active' : ''}`}
-              onClick={() => handleToggle('details')}
-            >
-              {activeView === 'details' ? '$ exit' : '$ details'}
-            </button>
-
-            <button
-              className={`details-toggle ${activeView === 'techstack' ? 'active' : ''}`}
-              onClick={() => handleToggle('techstack')}
-            >
-              {activeView === 'techstack' ? '$ exit' : '$ tech-stack'}
-            </button>
-          </div>
-
-          {activeView && (
-            <div className="terminal-container">
-              <div className="terminal-header">
-                <span className="terminal-dot red"></span>
-                <span className="terminal-dot yellow"></span>
-                <span className="terminal-dot green"></span>
-                <span className="terminal-title">
-                  {activeView === 'details' ? 'experience-details.sh' : 'tech-stack.sh'}
-                </span>
-              </div>
-              <div className="terminal-content">
-                <div className="terminal-prompt">
-                  <span className="prompt-user">ojus@portfolio</span>
-                  <span className="prompt-separator">:</span>
-                  <span className="prompt-path">~/experience</span>
-                  <span className="prompt-symbol">$</span>
-                  <span className="prompt-command">
-                    {activeView === 'details' ? ' cat details.txt' : ' cat tech-stack.txt'}
-                  </span>
-                </div>
-                <div className="terminal-output">
-                  {activeView === 'techstack' ? (
-                    <div className="tech-stack-tags">
-                      {displayedLines.map((tech, i) => (
-                        <span key={i} className="tech-tag">
-                          {tech}
-                        </span>
-                      ))}
-                      </div>
-                    ) : (
-                      displayedLines.map((detail, i) => (
-                        <div key={i} className="terminal-line visible">
-                          <span className="line-prefix">▹ </span>
-                          {detail}
-                        </div>
-                      ))
-                    )}
-                    {currentLine >= (activeView === 'details' ? experience.details.length : experience.techStack.length) && displayedLines.length > 0 && (
-                      <div className="terminal-prompt-end">
-                        <span className="prompt-user">ojus@portfolio</span>
-                        <span className="prompt-separator">:</span>
-                        <span className="prompt-path">~/experience</span>
-                        <span className="prompt-symbol">$</span>
-                        <span className="cursor-blink">_</span>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-
-          <div className="experience-period">{experience.period}</div>
         </div>
+
+        <div className="experience-period">{experience.period}</div>
       </div>
+    </div>
   );
 
   if (experience.company === 'Boeing') {
     return (
-      <div ref={cardRef} className={`boeing-card-wrapper ${offsetClass}`}>
-        <div className="experience-item">{cardContent}</div>
+      <div className={`boeing-card-wrapper ${offsetClass}`}>
+        <div className="experience-item" onClick={() => onOpenModal(experience, 'details')}>{cardContent}</div>
         <BoeingPlane />
       </div>
     );
@@ -430,17 +235,17 @@ const ExperienceItem = ({ experience, index, activeView, onToggle }) => {
 
   if (experience.company === 'University of British Columbia' && experience.id === 2) {
     return (
-      <div ref={cardRef} className={`ubc-card-wrapper ${offsetClass}`}>
+      <div className={`ubc-card-wrapper ${offsetClass}`}>
         <UBCNeural />
-        <div className="experience-item">{cardContent}</div>
+        <div className="experience-item" onClick={() => onOpenModal(experience, 'details')}>{cardContent}</div>
       </div>
     );
   }
 
   if (experience.company === 'Technical University of Munich (TUM)' && experience.id === 3) {
     return (
-      <div ref={cardRef} className={`tum-gears-card-wrapper ${offsetClass}`}>
-        <div className="experience-item">{cardContent}</div>
+      <div className={`tum-gears-card-wrapper ${offsetClass}`}>
+        <div className="experience-item" onClick={() => onOpenModal(experience, 'details')}>{cardContent}</div>
         <TUMGears />
       </div>
     );
@@ -448,44 +253,37 @@ const ExperienceItem = ({ experience, index, activeView, onToggle }) => {
 
   if (experience.company === 'Technical University of Munich (TUM)' && experience.id === 4) {
     return (
-      <div ref={cardRef} className={`tum-server-card-wrapper ${offsetClass}`}>
+      <div className={`tum-server-card-wrapper ${offsetClass}`}>
         <TUMServer />
-        <div className="experience-item">{cardContent}</div>
+        <div className="experience-item" onClick={() => onOpenModal(experience, 'details')}>{cardContent}</div>
       </div>
     );
   }
 
   if (experience.company === 'University of British Columbia' && experience.id === 5) {
     return (
-      <div ref={cardRef} className={`ubc-chart-card-wrapper ${offsetClass}`}>
-        <div className="experience-item">{cardContent}</div>
+      <div className={`ubc-chart-card-wrapper ${offsetClass}`}>
+        <div className="experience-item" onClick={() => onOpenModal(experience, 'details')}>{cardContent}</div>
         <UBCChart />
       </div>
     );
   }
 
   return (
-    <div ref={cardRef} className={`experience-item ${offsetClass}`}>
+    <div className={`experience-item ${offsetClass}`} onClick={() => onOpenModal(experience, 'details')}>
       {cardContent}
     </div>
   );
 };
 
 const Experience = () => {
-  const [activeItems, setActiveItems] = useState({});
+  const [modalState, setModalState] = useState(null);
 
-  const handleToggle = (expId, view) => {
-    setActiveItems(prev => {
-      const currentView = prev[expId];
-      if (currentView === view) {
-        const newState = { ...prev };
-        delete newState[expId];
-        return newState;
-      } else {
-        return { ...prev, [expId]: view };
-      }
-    });
+  const openModal = (experience, tab) => {
+    setModalState({ experience, tab });
   };
+
+  const closeModal = () => setModalState(null);
 
   return (
     <section id="experience" className="experience-section">
@@ -501,12 +299,21 @@ const Experience = () => {
             <ExperienceItem
               experience={exp}
               index={index}
-              activeView={activeItems[exp.id] || null}
-              onToggle={handleToggle}
+              onOpenModal={openModal}
             />
           </FadeIn>
         ))}
       </div>
+
+      <AnimatePresence>
+        {modalState && (
+          <ExperienceModal
+            experience={modalState.experience}
+            initialTab={modalState.tab}
+            onClose={closeModal}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 };
