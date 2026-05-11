@@ -22,8 +22,16 @@
 .experience-list {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 1.25rem;
   overflow-anchor: none;
+}
+
+@media (min-width: 481px) {
+  .experience-list { gap: 1.75rem; }
+}
+
+@media (min-width: 769px) {
+  .experience-list { gap: 3rem; }
 }
 
 .experience-item {
