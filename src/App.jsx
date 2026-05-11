@@ -62,8 +62,8 @@ function AppContent() {
               <>
                 <Hero />
                 <Experience />
-                <Skills />
                 <Projects />
+                <Skills />
                 <Contact />
                 <Footer />
               </>
