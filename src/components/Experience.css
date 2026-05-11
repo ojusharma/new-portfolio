@@ -67,12 +67,12 @@
   position: relative;
 }
 
-.boeing-card-wrapper { margin-left: 9%; }
+.boeing-card-wrapper { margin-left: 9%; margin-right: 9%; }
 .boeing-card-wrapper .experience-item { margin: 0; }
 
 .boeing-plane-strip {
   position: absolute;
-  right: calc(100% + 20px);
+  right: calc(100% + 8px);
   top: 0;
   width: 62px;
   height: 100%;
@@ -83,6 +83,7 @@
   border: 1px solid rgba(255, 165, 0, 0.08);
   box-shadow: 0 0 10px rgba(255, 120, 0, 0.03), inset 0 0 20px rgba(0, 0, 0, 0.5);
 }
+
 
 .plane-grid-line {
   position: absolute;
@@ -143,12 +144,12 @@
   position: relative;
 }
 
-.ubc-card-wrapper { margin-left: 9%; }
+.ubc-card-wrapper { margin-left: 9%; margin-right: 9%; }
 .ubc-card-wrapper .experience-item { margin: 0; }
 
 .ubc-neural-strip {
   position: absolute;
-  right: calc(100% + 20px);
+  right: calc(100% + 8px);
   top: 0;
   width: 62px;
   height: 100%;
@@ -282,12 +283,12 @@
   position: relative;
 }
 
-.tum-gears-card-wrapper { margin-left: 9%; }
+.tum-gears-card-wrapper { margin-left: 9%; margin-right: 9%; }
 .tum-gears-card-wrapper .experience-item { margin: 0; }
 
 .tum-gears-strip {
   position: absolute;
-  right: calc(100% + 20px);
+  right: calc(100% + 8px);
   top: 0;
   width: 62px;
   height: 100%;
@@ -353,12 +354,12 @@
   position: relative;
 }
 
-.tum-server-card-wrapper { margin-left: 9%; }
+.tum-server-card-wrapper { margin-left: 9%; margin-right: 9%; }
 .tum-server-card-wrapper .experience-item { margin: 0; }
 
 .tum-server-strip {
   position: absolute;
-  right: calc(100% + 20px);
+  right: calc(100% + 8px);
   top: 0;
   width: 62px;
   height: 100%;
@@ -419,12 +420,12 @@
   position: relative;
 }
 
-.ubc-chart-card-wrapper { margin-left: 9%; }
+.ubc-chart-card-wrapper { margin-left: 9%; margin-right: 9%; }
 .ubc-chart-card-wrapper .experience-item { margin: 0; }
 
 .ubc-chart-strip {
   position: absolute;
-  right: calc(100% + 20px);
+  right: calc(100% + 8px);
   top: 0;
   width: 62px;
   height: 100%;

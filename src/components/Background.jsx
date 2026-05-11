@@ -83,10 +83,10 @@ const fragmentShader = /* glsl */`
 
     float f = fbm(uv + r);
 
-    vec3 colA = vec3(0.010, 0.022, 0.055);
-    vec3 colB = vec3(0.018, 0.042, 0.100);
-    vec3 colC = vec3(0.024, 0.060, 0.135);
-    vec3 colD = vec3(0.018, 0.022, 0.075);
+    vec3 colA = vec3(0.008, 0.018, 0.080);
+    vec3 colB = vec3(0.014, 0.036, 0.145);
+    vec3 colC = vec3(0.020, 0.052, 0.190);
+    vec3 colD = vec3(0.012, 0.018, 0.110);
 
     vec3 color = mix(colA, colB, clamp(f * f * 4.0, 0.0, 1.0));
         color  = mix(color, colC, clamp(f * f * 2.0, 0.0, 1.0));
@@ -118,10 +118,10 @@ function computeTargetBrightness() {
   const fadeInEnd    = skillsTop + vh * 0.3;
 
   if (scrollY <= fadeOutStart) return 1.0;
-  if (scrollY <= fadeOutEnd) return 1.0 - (scrollY - fadeOutStart) / (fadeOutEnd - fadeOutStart);
-  if (scrollY <= fadeInStart) return 0.0;
-  if (scrollY <= fadeInEnd)   return (scrollY - fadeInStart) / (fadeInEnd - fadeInStart) * 0.8;
-  return 0.8;
+  if (scrollY <= fadeOutEnd) return 1.0 - (scrollY - fadeOutStart) / (fadeOutEnd - fadeOutStart) * 0.6;
+  if (scrollY <= fadeInStart) return 0.4;
+  if (scrollY <= fadeInEnd)   return 0.4 + (scrollY - fadeInStart) / (fadeInEnd - fadeInStart) * 0.6;
+  return 1.0;
 }
 
 export default function Background() {
@@ -132,7 +132,7 @@ export default function Background() {
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       document.body.style.background =
-        'radial-gradient(ellipse at 30% 40%, #0d1a2e 0%, #06060c 60%)';
+        'radial-gradient(ellipse at 30% 40%, #0d1a30 0%, #04040e 60%)';
       return;
     }
 
@@ -140,7 +140,7 @@ export default function Background() {
     const glTest = testCanvas.getContext('webgl') || testCanvas.getContext('experimental-webgl');
     if (!glTest) {
       document.body.style.background =
-        'radial-gradient(ellipse at 30% 40%, #0d1a2e 0%, #06060c 60%)';
+        'radial-gradient(ellipse at 30% 40%, #0d1a30 0%, #04040e 60%)';
       return;
     }
 

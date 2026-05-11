@@ -35,13 +35,19 @@ export default function CustomCursor() {
     };
     const onOut = () => setHovering(false);
 
+    const onHide = () => setVisible(false);
+
     window.addEventListener('mousemove', onMove);
     window.addEventListener('mouseover', onOver);
     window.addEventListener('mouseout', onOut);
+    window.addEventListener('blur', onHide);
+    document.addEventListener('mouseleave', onHide);
     return () => {
       window.removeEventListener('mousemove', onMove);
       window.removeEventListener('mouseover', onOver);
       window.removeEventListener('mouseout', onOut);
+      window.removeEventListener('blur', onHide);
+      document.removeEventListener('mouseleave', onHide);
     };
   }, [mouseX, mouseY, visible]);
 
