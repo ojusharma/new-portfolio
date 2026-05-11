@@ -70,7 +70,7 @@ const ExperienceModal = ({ experience, initialTab = 'details', onClose }) => {
           <div className="expm-chrome-title">
             ojus@portfolio: ~/experience/{slug}
           </div>
-          <kbd className="expm-esc-hint">ESC</kbd>
+          <button className="expm-esc-hint" onClick={onClose} aria-label="Close modal">ESC</button>
         </div>
 
         {/* Tabs */}
@@ -130,8 +130,7 @@ const ExperienceModal = ({ experience, initialTab = 'details', onClose }) => {
             ) : (
               displayedLines.map((line, i) => (
                 <div key={i} className="expm-line">
-                  <span className="expm-line-num">{String(i + 1).padStart(2, '0')}</span>
-                  <span className="expm-line-arrow">▹</span>
+                  <span className="expm-line-arrow">•</span>
                   <span className="expm-line-text">{line}</span>
                 </div>
               ))

@@ -101,6 +101,12 @@
   padding: 0.1rem 0.38rem;
   letter-spacing: 0.04em;
   flex-shrink: 0;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+.expm-esc-hint:hover {
+  color: #8892a0;
+  border-color: #3a4450;
 }
 
 /* ── Tab bar ─────────────────────────────────────── */
