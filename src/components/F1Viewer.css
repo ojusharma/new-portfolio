@@ -1,6 +1,6 @@
 .f1-viewer-page {
   min-height: 100vh;
-  background: #0a0a0a;
+  background: transparent;
   display: flex;
   flex-direction: column;
 }
@@ -106,7 +106,7 @@
   min-height: 600px;
   height: 600px;
   width: 100%;
-  background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+  background: transparent;
   border-top: 1px solid #222;
   border-bottom: 1px solid #222;
   position: relative;

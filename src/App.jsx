@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import Love from './components/Love';
 import F1Viewer from './components/F1Viewer';
 import CustomCursor from './components/animations/CustomCursor';
+import Background from './components/Background';
 import './App.css';
 
 class CursorErrorBoundary extends Component {
@@ -45,6 +46,7 @@ function AppContent() {
 
   return (
     <div className="app">
+      <Background />
       <CursorErrorBoundary><CustomCursor /></CursorErrorBoundary>
       {!isLovePage && <Navbar />}
       <ScrollToHash />

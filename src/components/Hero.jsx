@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { personalInfo } from '../data/personal';
 import FadeIn from './animations/FadeIn';
 import './Hero.css';
@@ -18,7 +16,6 @@ const useHasScrolled = () => {
 const TEXT_SEQUENCE = ['ojus', 'ojusharma', 'ojuuuuus', 'mo salah is goat', 'Ojus Sharma'];
 
 const Hero = () => {
-  const navigate = useNavigate();
   const hasScrolled = useHasScrolled();
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
@@ -27,22 +24,7 @@ const Hero = () => {
   const [isComplete, setIsComplete] = useState(false);
   const timerRef = useRef(null);
   
-  // F1 box visibility state - appears after 7 seconds
-  const [showF1Box, setShowF1Box] = useState(false);
-
-  // Show F1 box after 7 seconds
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowF1Box(true);
-    }, 7000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const handleBoxClick = () => {
-    navigate('/f1');
-  };
-
-  useEffect(() => {
+useEffect(() => {
     if (isComplete) {
       return;
     }
@@ -130,19 +112,7 @@ const Hero = () => {
         </FadeIn>
       </div>
 
-      {showF1Box && (
-        <motion.div
-          className="f1-box"
-          onClick={handleBoxClick}
-          initial={{ opacity: 0, scale: 0.8, y: 10 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.4, ease: [0.21, 0.47, 0.32, 0.98] }}
-        >
-          /f1
-        </motion.div>
-      )}
-
-      <div className={`scroll-hint ${hasScrolled ? 'scroll-hint--hidden' : ''}`} aria-hidden="true">
+<div className={`scroll-hint ${hasScrolled ? 'scroll-hint--hidden' : ''}`} aria-hidden="true">
         ▼
       </div>
     </section>

@@ -54,7 +54,7 @@ function Loader() {
   }, []);
 
   return (
-    <Html center>
+    <Html center style={{ pointerEvents: 'none' }}>
       <div className="loader">
         <span className="loader-text">Loading McLaren MCL39{dots}</span>
         <div className="loader-progress-bar">
@@ -260,11 +260,10 @@ const F1Viewer = () => {
 
         <Canvas
           shadows
-          gl={{ antialias: true }}
-          style={{ width: '100%', height: '100%' }}
+          gl={{ antialias: true, alpha: true }}
+          style={{ width: '100%', height: '100%', background: 'transparent' }}
         >
           <PerspectiveCamera makeDefault position={[-20.70, 16.29, 19.68]} fov={45} />
-          <color attach="background" args={['#0a0a0a']} />
           <ambientLight intensity={1} />
           <spotLight
             position={[10, 10, 10]}

@@ -91,7 +91,6 @@ const Navbar = () => {
           className="nav-logo"
           onClick={handleLogoClick}
         >
-          <span className="logo-ls">$</span>
           <span className="logo-portfolio">ojus</span>
         </button>
 

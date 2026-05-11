@@ -203,9 +203,7 @@ const UBCChart = () => {
   );
 };
 
-const ExperienceItem = ({ experience, index, onOpenModal }) => {
-  const offsetClass = index % 2 === 0 ? 'experience-item--left' : 'experience-item--right';
-
+const ExperienceItem = ({ experience, onOpenModal }) => {
   const cardContent = (
     <div className="experience-content">
       <div className="experience-header">
@@ -226,16 +224,16 @@ const ExperienceItem = ({ experience, index, onOpenModal }) => {
 
   if (experience.company === 'Boeing') {
     return (
-      <div className={`boeing-card-wrapper ${offsetClass}`}>
-        <div className="experience-item" onClick={() => onOpenModal(experience, 'details')}>{cardContent}</div>
+      <div className="boeing-card-wrapper">
         <BoeingPlane />
+        <div className="experience-item" onClick={() => onOpenModal(experience, 'details')}>{cardContent}</div>
       </div>
     );
   }
 
   if (experience.company === 'University of British Columbia' && experience.id === 2) {
     return (
-      <div className={`ubc-card-wrapper ${offsetClass}`}>
+      <div className="ubc-card-wrapper">
         <UBCNeural />
         <div className="experience-item" onClick={() => onOpenModal(experience, 'details')}>{cardContent}</div>
       </div>
@@ -244,16 +242,16 @@ const ExperienceItem = ({ experience, index, onOpenModal }) => {
 
   if (experience.company === 'Technical University of Munich (TUM)' && experience.id === 3) {
     return (
-      <div className={`tum-gears-card-wrapper ${offsetClass}`}>
-        <div className="experience-item" onClick={() => onOpenModal(experience, 'details')}>{cardContent}</div>
+      <div className="tum-gears-card-wrapper">
         <TUMGears />
+        <div className="experience-item" onClick={() => onOpenModal(experience, 'details')}>{cardContent}</div>
       </div>
     );
   }
 
   if (experience.company === 'Technical University of Munich (TUM)' && experience.id === 4) {
     return (
-      <div className={`tum-server-card-wrapper ${offsetClass}`}>
+      <div className="tum-server-card-wrapper">
         <TUMServer />
         <div className="experience-item" onClick={() => onOpenModal(experience, 'details')}>{cardContent}</div>
       </div>
@@ -262,15 +260,15 @@ const ExperienceItem = ({ experience, index, onOpenModal }) => {
 
   if (experience.company === 'University of British Columbia' && experience.id === 5) {
     return (
-      <div className={`ubc-chart-card-wrapper ${offsetClass}`}>
-        <div className="experience-item" onClick={() => onOpenModal(experience, 'details')}>{cardContent}</div>
+      <div className="ubc-chart-card-wrapper">
         <UBCChart />
+        <div className="experience-item" onClick={() => onOpenModal(experience, 'details')}>{cardContent}</div>
       </div>
     );
   }
 
   return (
-    <div className={`experience-item ${offsetClass}`} onClick={() => onOpenModal(experience, 'details')}>
+    <div className="experience-item" onClick={() => onOpenModal(experience, 'details')}>
       {cardContent}
     </div>
   );
@@ -299,7 +297,6 @@ const Experience = () => {
           <FadeIn key={exp.id} delay={index * 0.1} direction="up">
             <ExperienceItem
               experience={exp}
-              index={index}
               onOpenModal={openModal}
             />
           </FadeIn>
