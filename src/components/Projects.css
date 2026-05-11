@@ -5,6 +5,14 @@
   margin: 0 auto;
 }
 
+.section-subtext {
+  text-align: center;
+  color: #888;
+  font-size: 0.85rem;
+  margin-bottom: 3.5rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -54,7 +62,7 @@
 .project-bg-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.75) 100%);
+  background: linear-gradient(160deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.78) 100%);
   z-index: 1;
   pointer-events: none;
   transition: background 0.3s ease;

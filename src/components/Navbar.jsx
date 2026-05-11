@@ -66,8 +66,8 @@ const Navbar = () => {
 
   const navItems = [
     { id: 'experience', label: '/experience' },
-    { id: 'skills', label: '/skills' },
     { id: 'projects', label: '/projects' },
+    { id: 'skills', label: '/skills' },
     { id: 'contact', label: '/contact' },
     { id: 'f1', label: '/f1', isF1: true },
   ];

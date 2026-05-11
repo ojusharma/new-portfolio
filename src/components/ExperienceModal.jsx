@@ -51,6 +51,7 @@ const ExperienceModal = ({ experience, initialTab = 'details', onClose }) => {
       transition={{ duration: 0.18 }}
       onClick={onClose}
     >
+      <div className="expm-mobile-dismiss">tap here to exit</div>
       <motion.div
         className="expm-window"
         initial={{ scale: 0.91, opacity: 0, y: 24 }}

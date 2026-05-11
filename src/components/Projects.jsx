@@ -60,6 +60,7 @@ const Projects = () => {
         <h2 className="section-title">
           <span className="section-symbol">/</span>projects
         </h2>
+        <p className="section-subtext">Click on the cards to learn more!</p>
       </FadeIn>
 
       <StaggerGrid className="projects-grid">
