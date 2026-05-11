@@ -31,7 +31,7 @@ export default function CustomCursor() {
     };
 
     const onOver = (e) => {
-      if (e.target.closest('a, button')) setHovering(true);
+      if (e.target.closest('a, button, .experience-item')) setHovering(true);
     };
     const onOut = () => setHovering(false);
 
