@@ -2,7 +2,7 @@ export const experiences = [
   {
     id: 1,
     company: "Boeing",
-    role: "Software Development Intern, Vancouver",
+    role: "Software Development, Vancouver | 12 month Co-op + 6 month part-time",
     period: "Sep 2024 - Feb 2026",
     description: "\nEnhanced Java Spring Boot backend systems and platform reliability through strategic refactoring, CI/CD modernization, and security hardening across microservices.",
     details: [
