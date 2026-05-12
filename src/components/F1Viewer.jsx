@@ -1,17 +1,70 @@
 import React, { Suspense, useRef, useState, useEffect, useCallback } from 'react';
 import * as THREE from 'three';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { OrbitControls, useGLTF, Environment, Html, ContactShadows, Center, PerspectiveCamera, useProgress, Grid } from "@react-three/drei";
+import { OrbitControls, useGLTF, Environment, ContactShadows, Center, PerspectiveCamera, useProgress, Grid } from "@react-three/drei";
 import './F1Viewer.css';
+
+const MIN_DURATION = 5000;
 
 function LoadingOverlay() {
   const { progress, active } = useProgress();
-  const loading = active || progress < 100;
-  if (!loading) return null;
+  const [visible, setVisible] = useState(true);
+  const [displayProgress, setDisplayProgress] = useState(0);
+  const startTime = useRef(Date.now());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const elapsed = Date.now() - startTime.current;
+      setDisplayProgress(Math.min(100, (elapsed / MIN_DURATION) * 100));
+    }, 50);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (!active && progress >= 100) {
+      const elapsed = Date.now() - startTime.current;
+      const remaining = Math.max(0, MIN_DURATION - elapsed);
+      const timer = setTimeout(() => setVisible(false), remaining);
+      return () => clearTimeout(timer);
+    }
+  }, [active, progress]);
+
+  if (!visible) return null;
+
+  const SEGMENTS = 24;
+  const filledCount = Math.round((displayProgress / 100) * SEGMENTS);
+
   return (
     <div className="f1-loading-overlay">
-      <div className="f1-loading-spinner" />
-      <span className="f1-loading-label">Loading MCL39 — {Math.round(progress)}%</span>
+      <div className="f1-loading-scan" />
+      <div className="f1-loading-corner f1-loading-corner--tl" />
+      <div className="f1-loading-corner f1-loading-corner--tr" />
+      <div className="f1-loading-corner f1-loading-corner--bl" />
+      <div className="f1-loading-corner f1-loading-corner--br" />
+      <div className="f1-loading-ghost">MCL39</div>
+      <div className="f1-loading-content">
+        <span className="f1-loading-eyebrow">MCLAREN FORMULA ONE TEAM · 2025</span>
+        <div className="f1-loading-counter">
+          <span className="f1-loading-digits">{String(Math.round(displayProgress)).padStart(3, '0')}</span>
+          <span className="f1-loading-unit">%</span>
+        </div>
+        <div className="f1-loading-bar-wrap">
+          <div className="f1-loading-bar">
+            {Array.from({ length: SEGMENTS }).map((_, i) => (
+              <div
+                key={i}
+                className={`f1-seg${i < filledCount ? ' f1-seg--on' : ''}${i === filledCount - 1 && i < SEGMENTS - 1 ? ' f1-seg--lead' : ''}`}
+              />
+            ))}
+          </div>
+          <div className="f1-loading-meta">
+            <span>TELEMETRY UPLINK</span>
+            <span className={displayProgress >= 100 ? 'f1-meta--ready' : 'f1-meta--live'}>
+              {displayProgress >= 100 ? 'READY' : 'LIVE'}
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -53,27 +106,7 @@ function F1Car({ isRotating, resetRotation }) {
 }
 
 function Loader() {
-  const { progress } = useProgress();
-  const [dots, setDots] = useState('');
-  
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setDots(prev => prev.length >= 3 ? '' : prev + '.');
-    }, 400);
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <Html center style={{ pointerEvents: 'none' }}>
-      <div className="loader">
-        <span className="loader-text">Loading McLaren MCL39{dots}</span>
-        <div className="loader-progress-bar">
-          <div className="loader-progress-fill" style={{ width: `${progress}%` }} />
-        </div>
-        <span className="loader-percent">{progress.toFixed(0)}%</span>
-      </div>
-    </Html>
-  );
+  return null;
 }
 
 function CameraController({ view, controlsRef }) {
@@ -199,9 +232,6 @@ const F1Viewer = () => {
   return (
     <div className="f1-viewer-page">
       <div className="f1-header">
-        <h1 className="f1-title">
-          <span className="section-symbol">/</span>f1
-        </h1>
         <p className="f1-tagline">my favourite hobby - visualized for you - it's interactive!</p>
       </div>
 
