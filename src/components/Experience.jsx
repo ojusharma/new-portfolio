@@ -38,7 +38,7 @@ const BAR_DATA = [
 
 const AnimatedStrip = ({ side = 'left', className, children }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-40px' });
+  const isInView = useInView(ref, { once: true, margin: '0px 0px -30% 0px' });
 
   return (
     <motion.div
