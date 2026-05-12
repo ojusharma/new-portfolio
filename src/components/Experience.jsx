@@ -231,7 +231,7 @@ const Experience = () => {
         <h2 className="section-title">
           <span className="section-symbol">/</span>experience
         </h2>
-        <p className="section-subtext">Click on the cards to learn more!</p>
+        <p className="section-subtext">Click on the cards to learn more :) </p>
       </FadeIn>
 
       <div className="experience-list">

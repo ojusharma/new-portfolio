@@ -4,6 +4,18 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls, useGLTF, Environment, Html, ContactShadows, Center, PerspectiveCamera, useProgress, Grid } from "@react-three/drei";
 import './F1Viewer.css';
 
+function LoadingOverlay() {
+  const { progress, active } = useProgress();
+  const loading = active || progress < 100;
+  if (!loading) return null;
+  return (
+    <div className="f1-loading-overlay">
+      <div className="f1-loading-spinner" />
+      <span className="f1-loading-label">Loading MCL39 — {Math.round(progress)}%</span>
+    </div>
+  );
+}
+
 function F1Car({ isRotating, resetRotation }) {
   const group = useRef();
   const { scene } = useGLTF('/f1-2025_mclaren_mcl39.glb');
@@ -39,8 +51,6 @@ function F1Car({ isRotating, resetRotation }) {
     </Center>
   );
 }
-
-useGLTF.preload('/f1-2025_mclaren_mcl39.glb');
 
 function Loader() {
   const { progress } = useProgress();
@@ -108,6 +118,8 @@ const F1Viewer = () => {
   const [playedIndices, setPlayedIndices] = useState([]);
   const controlsRef = useRef();
   const audioRef = useRef(null);
+  const { active, progress } = useProgress();
+  const isLoading = active || progress < 100;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -205,7 +217,8 @@ const F1Viewer = () => {
         </div>
       </div>
 
-      <div className="canvas-container">
+      <div className="canvas-container" style={isLoading ? { cursor: 'auto' } : undefined}>
+        <LoadingOverlay />
         <div className="view-buttons">
           <span className="camera-options-label">Camera Options</span>
           <div className="camera-options-dropdown">
