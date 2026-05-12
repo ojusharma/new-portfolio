@@ -97,7 +97,7 @@ const Navbar = () => {
           className="nav-logo"
           onClick={handleLogoClick}
         >
-          <span className="logo-portfolio">ojus</span>
+          <span className="logo-portfolio">ojus sharma</span>
         </button>
 
         <button
