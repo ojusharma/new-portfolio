@@ -20,21 +20,21 @@ const itemVariants = {
 
 export function StaggerGrid({ children, className }) {
   return (
-    <motion.div
-      className={className}
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, margin: '-60px' }}
-    >
+    <div className={className}>
       {children}
-    </motion.div>
+    </div>
   );
 }
 
 export function StaggerItem({ children, className }) {
   return (
-    <motion.div className={className} variants={itemVariants}>
+    <motion.div
+      className={className}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: '-60px' }}
+      variants={itemVariants}
+    >
       {children}
     </motion.div>
   );
