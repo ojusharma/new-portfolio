@@ -6,7 +6,7 @@ export const education = {
   gpa: { value: "4.30", scale: "4.33" },
   honours: [
     { name: "Dean's Scholar", year: "2026" },
-    { name: "Co-op @ Boeing", year: "2025" },
+    { name: "Co-op @ Boeing", year: "2024-2025" },
     { name: "Dean's List", year: "2021-24" },
   ],
   scholarships: [
