@@ -1,5 +1,15 @@
 export const projects = [
   {
+    id: 8,
+    title: "F1 Distributed Systems",
+    description: "Simulated F1 telemetry stream, processed by distributed AWS workers that split load as nodes scale.",
+    tags: ["AWS", "Distributed Systems", "Real-Time Data"],
+    image: "/projects/sebastian-vettel-after-winning-the-2013-indian-grand-prix-v0-wvtf8brxhul01.webp",
+    imageOpacity: 1,
+    overlayOpacity: 0.3,
+    status: "In progress"
+  },
+  {
     id: 0,
     title: "Fora - UBC Task Board",
     description: "UBC-exclusive task marketplace with ML-powered recommendations, and campus rewards system.",
@@ -20,17 +30,6 @@ export const projects = [
     overlayOpacity: 0.3,
     liveUrl: "https://github.com/COSC-499-W2025/capstone-project-team-5",
     detailsUrl: "https://github.com/COSC-499-W2025/capstone-project-team-5"
-  },
-  {
-    id: 3,
-    title: "F1 Trigger Chrome Extension",
-    description: "A Chrome extension that brings Formula 1 racing to your browser.",
-    tags: ["JavaScript", "Chrome Extension"],
-    image: "/projects/f1.jpg",
-    imageOpacity: 1,
-    overlayOpacity: 0.3,
-    liveUrl: "https://github.com/ojusharma/f1-trigger-chrome-extension",
-    detailsUrl: "https://github.com/ojusharma/f1-trigger-chrome-extension"
   },
   {
     id: 5,
@@ -86,5 +85,16 @@ export const projects = [
     overlayOpacity: 0.3,
     liveUrl: "https://github.com/ojusharma/new-portfolio",
     detailsUrl: "https://github.com/ojusharma/new-portfolio"
+  },
+  {
+    id: 3,
+    title: "F1 Trigger Chrome Extension",
+    description: "A Chrome extension that brings Formula 1 racing to your browser.",
+    tags: ["JavaScript", "Chrome Extension"],
+    image: "/projects/f1.jpg",
+    imageOpacity: 1,
+    overlayOpacity: 0.3,
+    liveUrl: "https://github.com/ojusharma/f1-trigger-chrome-extension",
+    detailsUrl: "https://github.com/ojusharma/f1-trigger-chrome-extension"
   }
 ];

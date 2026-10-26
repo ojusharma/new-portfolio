@@ -1,0 +1,213 @@
+.education-section {
+  padding: 4rem 2rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.edu-card {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: rgba(10, 10, 10, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.edu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding-bottom: 1.75rem;
+}
+
+.edu-school {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.edu-degree {
+  font-size: 0.95rem;
+  color: #ddd;
+  line-height: 1.5;
+}
+
+.edu-minor {
+  font-size: 0.9rem;
+  color: #888;
+  line-height: 1.5;
+}
+
+.edu-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+.edu-graduated {
+  font-size: 0.9rem;
+  color: #00d9ff;
+}
+
+.edu-gpa {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.edu-gpa-label,
+.edu-gpa-scale {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #888;
+}
+
+.edu-awards,
+.edu-roles {
+  padding-top: 1.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.edu-awards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding-bottom: 1.75rem;
+}
+
+.edu-group-label {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #888;
+  margin-bottom: 0.9rem;
+}
+
+.edu-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.edu-row,
+.edu-role-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: #fff;
+  line-height: 1.5;
+}
+
+.edu-roles .edu-list {
+  gap: 1.5rem;
+}
+
+.edu-highlights {
+  list-style: none;
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.edu-highlights li {
+  position: relative;
+  padding-left: 1.1rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #999;
+}
+
+.edu-highlights li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: #FFA500;
+}
+
+.edu-period {
+  color: #00d9ff;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.edu-muted {
+  color: #888;
+}
+
+.edu-row .edu-muted {
+  text-align: right;
+}
+
+@media (max-width: 968px) {
+  .education-section {
+    padding: 2rem 1.5rem 2.5rem;
+  }
+
+  .edu-card {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .education-section {
+    padding-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .education-section {
+    padding: 1.5rem 1.25rem 1.5rem;
+  }
+
+  .edu-card {
+    padding: 1.25rem;
+  }
+
+  .edu-header {
+    flex-direction: column-reverse;
+    gap: 1rem;
+  }
+
+  .edu-meta {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .edu-school {
+    font-size: 1.05rem;
+  }
+
+  .edu-awards {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .edu-role-head {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .edu-period {
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .education-section {
+    padding: 1rem 1rem 1.5rem;
+  }
+
+  .edu-card {
+    padding: 1rem;
+  }
+}

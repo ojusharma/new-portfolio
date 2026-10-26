@@ -19,12 +19,15 @@ const ProjectCard = ({ project }) => {
     hovered: { opacity: project.overlayOpacity ?? 1 },
   };
 
+  const linkProps = project.detailsUrl
+    ? { href: project.detailsUrl, target: '_blank', rel: 'noopener noreferrer' }
+    : {};
+  const Card = project.detailsUrl ? motion.a : motion.div;
+
   return (
-    <motion.a
-      className="project-card"
-      href={project.detailsUrl}
-      target="_blank"
-      rel="noopener noreferrer"
+    <Card
+      className={`project-card${project.detailsUrl ? '' : ' project-card--static'}`}
+      {...linkProps}
       initial="idle"
       whileHover="hovered"
       animate="idle"
@@ -48,8 +51,9 @@ const ProjectCard = ({ project }) => {
       <div className="project-content">
         <h3 className="project-title">{project.title}</h3>
         <p className="project-description">{project.description}</p>
+        {project.status && <span className="project-status">{project.status}</span>}
       </div>
-    </motion.a>
+    </Card>
   );
 };
 

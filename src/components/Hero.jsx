@@ -13,28 +13,19 @@ const useHasScrolled = () => {
   return scrolled;
 };
 
-const TEXT_SEQUENCE = ['ojus', 'ojusharma', 'ojuuuuus', 'mo salah is goat', 'Ojus Sharma'];
+const TEXT_SEQUENCE = ['ojus', 'ojusharma', 'ojuuuuus', 'Ojus Sharma'];
 
 const Hero = () => {
   const hasScrolled = useHasScrolled();
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
-  const [profileImage, setProfileImage] = useState('/profile.jpeg');
   const [isComplete, setIsComplete] = useState(false);
   const timerRef = useRef(null);
   
 useEffect(() => {
     if (isComplete) {
       return;
-    }
-
-    if (loopNum === 3 && !isDeleting && displayText.length === 0) {
-      setProfileImage('/mosalah.png');
-    } else if (loopNum === 3 && isDeleting && displayText === '') {
-      setProfileImage('/profile.jpeg');
-    } else if (loopNum < 3) {
-      setProfileImage('/profile.jpeg');
     }
 
     const handleTyping = () => {
@@ -84,9 +75,9 @@ useEffect(() => {
           
           <FadeIn delay={0.3} direction="up">
             <div className="hero-details">
+              <p className="hero-role">{personalInfo.role}</p>
               <p className="hero-title">{personalInfo.title}</p>
               <p className="hero-university">{personalInfo.university}</p>
-              <p className="hero-graduation">{personalInfo.graduation}</p>
             </div>
           </FadeIn>
 
@@ -102,7 +93,7 @@ useEffect(() => {
         <FadeIn delay={0.15} direction="left">
           <div className="hero-image">
             <img
-              src={profileImage}
+              src="/profile.jpeg"
               alt={displayText || personalInfo.name}
               onError={(e) => {
                 e.target.src = 'https://via.placeholder.com/300x300/1a1a1a/FFA500?text=Add+Your+Photo';

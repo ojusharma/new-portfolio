@@ -49,6 +49,33 @@
   transition: transform 0.1s ease;
 }
 
+.project-card--static,
+.project-card--static:hover {
+  cursor: default;
+  box-shadow: none;
+}
+
+.project-card--static:active {
+  transform: none;
+}
+
+.project-status {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.75rem;
+  color: #FFA500;
+}
+
+.project-status::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #FFA500;
+}
+
 .project-bg-image {
   position: absolute;
   inset: 0;

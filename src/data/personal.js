@@ -1,9 +1,9 @@
 export const personalInfo = {
   name: "OJUS SHARMA",
-  title: "Computer Science + Data Science Minor",
-  university: "The University of British Columbia",
-  graduation: "Graduating May 2026",
+  role: "Software Engineer",
+  title: "Computer Science + Data Science",
+  university: "The University of British Columbia '26",
   tagline: "Always looking to make an impact.",
-  location: "Based in Canada · Open to 2026 New Grad Roles :)",
+  location: "Based in Canada",
   profileImage: "/profile.jpeg"
 };

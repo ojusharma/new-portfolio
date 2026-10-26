@@ -49,17 +49,17 @@
   line-height: 1.8;
 }
 
-.hero-title {
+.hero-role {
   font-size: 1.1rem;
   margin: 0;
 }
 
-.hero-university {
+.hero-title {
   font-size: 1.1rem;
   margin: 0.25rem 0;
 }
 
-.hero-graduation {
+.hero-university {
   font-size: 1.1rem;
   margin: 0;
 }
@@ -171,9 +171,9 @@
     line-height: 1.6;
   }
 
+  .hero-role,
   .hero-title,
-  .hero-university,
-  .hero-graduation {
+  .hero-university {
     font-size: 0.9rem;
   }
 

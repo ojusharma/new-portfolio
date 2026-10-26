@@ -2,7 +2,7 @@ export const experiences = [
   {
     id: 1,
     company: "Boeing",
-    role: "Software Development, Vancouver | 12 month Co-op + 6 month part-time",
+    role: "Software Development Intern, Vancouver | 12 month Co-op + 6 month part-time",
     period: "Sep 2024 - Feb 2026",
     description: "\nEnhanced Java Spring Boot backend systems and platform reliability through strategic refactoring, CI/CD modernization, and security hardening across microservices.",
     details: [
@@ -25,9 +25,9 @@ export const experiences = [
     company: "University of British Columbia",
     role: "Software Developer / Research Student",
     period: "Sep 2025 - Apr 2026",
-    description: "Designing an AI system that leverages Large Language Models (LLMs) to personalize computer science practice problems based on individual student profiles and preferences.",
+    description: "Designed an AI system that leverages Large Language Models (LLMs) to personalize computer science practice problems based on individual student profiles and preferences.",
     details: [
-      "Designing an AI system that leverages Large Language Models (LLMs) to personalize computer science practice problems based on individual student profiles and preferences.",
+      "Designed an AI system that leverages Large Language Models (LLMs) to personalize computer science practice problems based on individual student profiles and preferences.",
       "Building a full-stack software with React Router and TypeScript; integrating LLM pipelines for adaptive content retrieval.",
       "Conducting an evaluation study with a target population of 2,000+ CS undergraduates to assess impacts on learning outcomes and engagement, under the supervision of Prof. Abdallah Mohamed."
     ],

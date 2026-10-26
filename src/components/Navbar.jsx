@@ -28,7 +28,7 @@ const Navbar = () => {
         return;
       }
 
-      const sections = ['home', 'experience', 'skills', 'projects', 'contact'];
+      const sections = ['home', 'experience', 'education', 'skills', 'projects', 'contact'];
       const currentSection = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -72,6 +72,7 @@ const Navbar = () => {
 
   const navItems = [
     { id: 'experience', label: '/experience' },
+    { id: 'education', label: '/education' },
     { id: 'projects', label: '/projects' },
     { id: 'skills', label: '/skills' },
     { id: 'contact', label: '/contact' },
