@@ -58,6 +58,16 @@ html.custom-cursor-active *:hover {
   cursor: none !important;
 }
 
+/* F1 page loading gate: the custom cursor is JS-driven and freezes while the
+   main thread parses the model, so fall back to the native cursor. */
+html.f1-loading *,
+html.f1-loading *:hover {
+  cursor: default !important;
+}
+html.f1-loading .custom-cursor {
+  display: none !important;
+}
+
 /* Smooth transitions */
 button, a {
   transition: all 0.3s ease;

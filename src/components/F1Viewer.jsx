@@ -29,6 +29,21 @@ function LoadingOverlay() {
     }
   }, [active, progress]);
 
+  // Gate the whole page while loading: lock scroll and hand the cursor back to
+  // the browser (the JS-driven custom cursor freezes while the main thread is
+  // busy parsing the model).
+  useEffect(() => {
+    if (!visible) return;
+    const root = document.documentElement;
+    root.classList.add('f1-loading');
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      root.classList.remove('f1-loading');
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [visible]);
+
   if (!visible) return null;
 
   const SEGMENTS = 24;
@@ -151,8 +166,6 @@ const F1Viewer = () => {
   const [playedIndices, setPlayedIndices] = useState([]);
   const controlsRef = useRef();
   const audioRef = useRef(null);
-  const { active, progress } = useProgress();
-  const isLoading = active || progress < 100;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -247,8 +260,8 @@ const F1Viewer = () => {
         </div>
       </div>
 
-      <div className="canvas-container" style={isLoading ? { cursor: 'auto' } : undefined}>
-        <LoadingOverlay />
+      <LoadingOverlay />
+      <div className="canvas-container">
         <div className="view-buttons">
           <span className="camera-options-label">Camera Options</span>
           <div className="camera-options-dropdown">

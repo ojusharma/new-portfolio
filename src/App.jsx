@@ -45,19 +45,6 @@ function ScrollToHash() {
 function AppContent() {
   const location = useLocation();
   const isLovePage = location.pathname === '/love';
-  const isHomePage = location.pathname === '/';
-
-  useEffect(() => {
-    if (!isHomePage) return;
-    const preload = () => fetch('/f1-2025_mclaren_mcl39.glb', { priority: 'low' });
-    if ('requestIdleCallback' in window) {
-      const id = requestIdleCallback(preload, { timeout: 5000 });
-      return () => cancelIdleCallback(id);
-    } else {
-      const id = setTimeout(preload, 3000);
-      return () => clearTimeout(id);
-    }
-  }, [isHomePage]);
 
   return (
     <div className="app">

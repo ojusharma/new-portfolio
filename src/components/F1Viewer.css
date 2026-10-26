@@ -275,14 +275,14 @@
 
 /* ── Loading overlay ── */
 .f1-loading-overlay {
-  position: absolute;
+  position: fixed;
   inset: 0;
-  z-index: 30;
+  z-index: 2000; /* above navbar (1000), below custom cursor (9999) */
   display: flex;
   align-items: center;
   justify-content: center;
   background: #050505;
-  pointer-events: none;
+  pointer-events: auto;
   overflow: hidden;
 }
 

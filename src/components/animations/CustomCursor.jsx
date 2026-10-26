@@ -57,6 +57,7 @@ export default function CustomCursor() {
     <>
       {/* Outer ring — lags behind */}
       <motion.div
+        className="custom-cursor"
         style={{
           position: 'fixed',
           top: 0,
@@ -80,6 +81,7 @@ export default function CustomCursor() {
       />
       {/* Inner dot — snaps */}
       <motion.div
+        className="custom-cursor"
         style={{
           position: 'fixed',
           top: 0,
